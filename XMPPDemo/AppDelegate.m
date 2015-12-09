@@ -50,7 +50,7 @@
 }
 
 - (void)connectToHost {
-    NSLog(@"开始连接到服务器");
+    WCLog(@"开始连接到服务器");
     if (!_xmppStream) {
         [self setUpXMPPStream];
     }
@@ -61,47 +61,54 @@
     
     XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"teacher.local" resource:@"iPhone"];
     _xmppStream.myJID = myJID;
-    _xmppStream.hostPort = 5222;
+    _xmppStream.hostPort = 15222;
     NSError * error = nil;
     if ([_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error]) {
-        NSLog(@"%@",error);
+        WCLog(@"%@",error);
     }
 }
 
 - (void)sendPwdToHost {
-    NSLog(@"再发送密码授权");
+    WCLog(@"再发送密码授权");
     NSError * error = nil;
     // 从沙盒获取密码
     NSString * pwd = [[NSUserDefaults standardUserDefaults] objectForKey:@"pwd"];
     [_xmppStream authenticateWithPassword:pwd error:&error];
     if (error) {
-        NSLog(@"%@",error);
+        WCLog(@"%@",error);
     }
 }
 
 - (void)sendOnlineToHost {
     //
-    NSLog(@"发送在线消息");
+    WCLog(@"发送在线消息");
     XMPPPresence * presence = [XMPPPresence presence];
-    NSLog(@"%@",presence);
+    WCLog(@"%@",presence);
     [_xmppStream sendElement:presence];
 }
 
 #pragma mark -XMPPStream的代理
 #pragma mark 与主机连接成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender {
-    NSLog(@"与主机连接成功");
+    WCLog(@"与主机连接成功");
     [self sendPwdToHost];
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error {
+    
     // 如果有错误,代表连接失败
-    NSLog(@"与主机断开连接%@",error);
+    
+    // 如果没有错误,表示正常的断开连接(人为断开连接)
+    if (error && _resultBlock) {
+        _resultBlock(XMPPResultTypeNetError);
+    }
+    
+    WCLog(@"与主机断开连接%@",error);
 }
 
 #pragma mark 授权成功
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
-    NSLog(@"授权成功");
+    WCLog(@"授权成功");
     [self sendOnlineToHost];
     
     // 回调控制器 登录成功
@@ -114,7 +121,7 @@
 
 #pragma mark 授权失败
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error {
-    NSLog(@"授权失败 %@",error);
+    WCLog(@"授权失败 %@",error);
     // 判断Block有无值,再回调给登录控制器
     if (_resultBlock) {
         _resultBlock(XMPPResultTypeLoginFailure);
@@ -135,6 +142,14 @@
     // 先把Block保存起来
     
     _resultBlock = resultBlock;
+    
+    
+    // 如果以前连接过服务,要断开
+//    if (_xmppStream.isConnected) {
+        [_xmppStream disconnect];
+//    }
+
+    
     // 连接主机 成功后发送密码
     [self connectToHost];
 }

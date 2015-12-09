@@ -54,8 +54,11 @@
     [defaults setObject:user forKey:@"user"];
     [defaults setObject:pwd forKey:@"pwd"];
     [defaults synchronize];
+    
+    [self.view endEditing:YES];
+    
     // 登录之前给个提示
-    [MBProgressHUD showMessage:@"正在登录中......"];
+    [MBProgressHUD showMessage:@"正在登录中......" toView:self.view];
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     __weak typeof(self) selfWeak = self;
     [app xmppUserLogin:^(XMPPResultType type){
@@ -67,7 +70,7 @@
 
 - (void)handleResultType:(XMPPResultType)type {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
         switch (type) {
             case XMPPResultTypeLoginSuccess:
                 NSLog(@"登录成功");
@@ -77,8 +80,12 @@
                 
             case XMPPResultTypeLoginFailure:
                 NSLog(@"登录失败");
-                [MBProgressHUD showError:@"用户名或者密码不正确"];
+                [MBProgressHUD showError:@"用户名或者密码不正确" toView:self.view];
                 break;
+                
+            case XMPPResultTypeNetError:
+                [MBProgressHUD showError:@"网络不给力" toView:self.view];
+                
             default:
                 break;
         }
