@@ -65,17 +65,45 @@
     }
 }
 
+- (void)sendPwdToHost {
+    NSLog(@"再发送密码授权");
+    NSError * error = nil;
+    [_xmppStream authenticateWithPassword:@"123456" error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    }
+}
+
+- (void)sendOnlineToHost {
+    //
+    NSLog(@"发送在线消息");
+    XMPPPresence * presence = [XMPPPresence presence];
+    NSLog(@"%@",presence);
+    [_xmppStream sendElement:presence];
+}
 
 #pragma mark -XMPPStream的代理
 #pragma mark 与主机连接成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender {
     NSLog(@"与主机连接成功");
-    
+    [self sendPwdToHost];
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error {
     // 如果有错误,代表连接失败
     NSLog(@"与主机断开连接%@",error);
 }
+
+#pragma mark 授权成功
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
+    NSLog(@"授权成功");
+    [self sendOnlineToHost];
+}
+
+#pragma mark 授权失败
+- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error {
+    NSLog(@"授权失败 %@",error);
+}
+
 
 @end
