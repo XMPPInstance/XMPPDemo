@@ -144,6 +144,7 @@
 		FCF94F591C16CF02004D86E8 /* XMPPMessage+XEP_0308.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94EFC1C16CF02004D86E8 /* XMPPMessage+XEP_0308.m */; };
 		FCF94F5A1C16CF02004D86E8 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94EFF1C16CF02004D86E8 /* XMPPMessage+XEP_0333.m */; };
 		FCF94F5B1C16CF02004D86E8 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F021C16CF02004D86E8 /* NSXMLElement+XEP_0335.m */; };
+		FCF94F621C17C67B004D86E8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF94F611C17C67B004D86E8 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -438,6 +439,7 @@
 		FCF94F021C16CF02004D86E8 /* NSXMLElement+XEP_0335.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+XEP_0335.m"; sourceTree = "<group>"; };
 		FCF94F5D1C16CF4F004D86E8 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		FCF94F5E1C16CFCC004D86E8 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		FCF94F611C17C67B004D86E8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,7 +491,6 @@
 				FCF94D311C151D30004D86E8 /* AppDelegate.m */,
 				FCF94D331C151D30004D86E8 /* ViewController.h */,
 				FCF94D341C151D30004D86E8 /* ViewController.m */,
-				FCF94D361C151D30004D86E8 /* Main.storyboard */,
 				FCF94D391C151D30004D86E8 /* Images.xcassets */,
 				FCF94D3B1C151D30004D86E8 /* LaunchScreen.xib */,
 				FCF94D2C1C151D30004D86E8 /* Supporting Files */,
@@ -527,6 +528,8 @@
 		FCF94D881C16CBEE004D86E8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FCF94F601C17C634004D86E8 /* Main */,
+				FCF94F5F1C17C5F6004D86E8 /* Login */,
 				FCF94D891C16CC01004D86E8 /* Lib */,
 			);
 			path = Classes;
@@ -1328,6 +1331,22 @@
 			path = "XEP-0335";
 			sourceTree = "<group>";
 		};
+		FCF94F5F1C17C5F6004D86E8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94F611C17C67B004D86E8 /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FCF94F601C17C634004D86E8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94D361C151D30004D86E8 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1410,6 +1429,7 @@
 			files = (
 				FCF94DC01C16CCDA004D86E8 /* build-libidn.sh in Resources */,
 				FCF94D381C151D30004D86E8 /* Main.storyboard in Resources */,
+				FCF94F621C17C67B004D86E8 /* Login.storyboard in Resources */,
 				FCF94D3D1C151D30004D86E8 /* LaunchScreen.xib in Resources */,
 				FCF94DBB1C16CCDA004D86E8 /* README.txt in Resources */,
 				FCF94D3A1C151D30004D86E8 /* Images.xcassets in Resources */,
@@ -1586,6 +1606,7 @@
 				FCF94D371C151D30004D86E8 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		FCF94D3B1C151D30004D86E8 /* LaunchScreen.xib */ = {
