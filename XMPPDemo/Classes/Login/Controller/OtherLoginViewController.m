@@ -7,7 +7,7 @@
 //
 
 #import "OtherLoginViewController.h"
-
+#import "AppDelegate.h"
 @interface OtherLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftContraint;
@@ -40,7 +40,26 @@
     [self.loginBtn setResizedN_BG:@"fts_green_btn" H_BG:@"fts_green_btn_HL"];
     
 }
-
+- (IBAction)loginBtnClick {
+    // 登录
+    /*官方的登录实现
+     * 1 把用户名和密码放在沙盒里
+     * 2 调用AppDelegate的一个connect 连接服务并登录
+     *
+     */
+    NSString * user = self.userField.text;
+    NSString * pwd = self.pwdField.text;
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:user forKey:@"user"];
+    [defaults setObject:pwd forKey:@"pwd"];
+    [defaults synchronize];
+    
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [app xmppUserLogin];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -36,7 +36,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [self connectToHost];
+//    [self connectToHost];
     return YES;
 }
 #pragma mark 私有方法
@@ -49,14 +49,16 @@
 }
 
 - (void)connectToHost {
+    NSLog(@"开始连接到服务器");
     if (!_xmppStream) {
         [self setUpXMPPStream];
     }
-    
-    
     // 设置登录用户JID
     // resource 标识用户登录的客户端 iPhone Android WindowsPhone
-    XMPPJID * myJID = [XMPPJID jidWithUser:@"lisi" domain:@"teacher.local" resource:@"iPhone"];
+    NSString * user = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    
+    
+    XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"teacher.local" resource:@"iPhone"];
     _xmppStream.myJID = myJID;
     _xmppStream.hostPort = 5222;
     NSError * error = nil;
@@ -68,7 +70,9 @@
 - (void)sendPwdToHost {
     NSLog(@"再发送密码授权");
     NSError * error = nil;
-    [_xmppStream authenticateWithPassword:@"123456" error:&error];
+    // 从沙盒获取密码
+    NSString * pwd = [[NSUserDefaults standardUserDefaults] objectForKey:@"pwd"];
+    [_xmppStream authenticateWithPassword:pwd error:&error];
     if (error) {
         NSLog(@"%@",error);
     }
@@ -114,4 +118,9 @@
     // 2 与服务器断开连接
     [_xmppStream disconnect];
 }
+// 连接主机 成功后发送密码
+- (void)xmppUserLogin {
+    [self connectToHost];
+}
+
 @end
