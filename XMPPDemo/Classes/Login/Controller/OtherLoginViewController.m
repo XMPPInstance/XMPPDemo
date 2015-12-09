@@ -54,9 +54,19 @@
     [defaults setObject:user forKey:@"user"];
     [defaults setObject:pwd forKey:@"pwd"];
     [defaults synchronize];
-    
+    // 登录之前给个提示
+    [MBProgressHUD showMessage:@"正在登录中......"];
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     [app xmppUserLogin:^(XMPPResultType type){
+        [self handleResultType:type];
+    }];
+    
+    
+}
+
+- (void)handleResultType:(XMPPResultType)type {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUD];
         switch (type) {
             case XMPPResultTypeLoginSuccess:
                 NSLog(@"登录成功");
@@ -64,13 +74,12 @@
                 
             case XMPPResultTypeLoginFailure:
                 NSLog(@"登录失败");
+                [MBProgressHUD showError:@"用户名或者密码不正确"];
                 break;
             default:
                 break;
         }
-    }];
-    
-    
+    });
 }
 
 - (void)didReceiveMemoryWarning {

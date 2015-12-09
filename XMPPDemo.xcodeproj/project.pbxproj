@@ -152,6 +152,9 @@
 		FCF94F791C17D4E2004D86E8 /* UIStoryboard+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F711C17D4E2004D86E8 /* UIStoryboard+WF.m */; };
 		FCF94F7A1C17D4E2004D86E8 /* UITextField+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F731C17D4E2004D86E8 /* UITextField+WF.m */; };
 		FCF94F7B1C17D4E2004D86E8 /* UIView+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F751C17D4E2004D86E8 /* UIView+WF.m */; };
+		FCF94F821C180913004D86E8 /* MBProgressHUD+HM.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F7E1C180913004D86E8 /* MBProgressHUD+HM.m */; };
+		FCF94F831C180913004D86E8 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF94F7F1C180913004D86E8 /* MBProgressHUD.bundle */; };
+		FCF94F841C180913004D86E8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F811C180913004D86E8 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +465,11 @@
 		FCF94F731C17D4E2004D86E8 /* UITextField+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WF.m"; sourceTree = "<group>"; };
 		FCF94F741C17D4E2004D86E8 /* UIView+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WF.h"; sourceTree = "<group>"; };
 		FCF94F751C17D4E2004D86E8 /* UIView+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WF.m"; sourceTree = "<group>"; };
+		FCF94F7D1C180913004D86E8 /* MBProgressHUD+HM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HM.h"; sourceTree = "<group>"; };
+		FCF94F7E1C180913004D86E8 /* MBProgressHUD+HM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HM.m"; sourceTree = "<group>"; };
+		FCF94F7F1C180913004D86E8 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		FCF94F801C180913004D86E8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FCF94F811C180913004D86E8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +569,7 @@
 		FCF94D891C16CC01004D86E8 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				FCF94F7C1C180913004D86E8 /* MBProgessHUD */,
 				FCF94F681C17D4E2004D86E8 /* Category */,
 				FCF94D8A1C16CC0C004D86E8 /* XMPP */,
 			);
@@ -1408,6 +1417,18 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		FCF94F7C1C180913004D86E8 /* MBProgessHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94F7D1C180913004D86E8 /* MBProgressHUD+HM.h */,
+				FCF94F7E1C180913004D86E8 /* MBProgressHUD+HM.m */,
+				FCF94F7F1C180913004D86E8 /* MBProgressHUD.bundle */,
+				FCF94F801C180913004D86E8 /* MBProgressHUD.h */,
+				FCF94F811C180913004D86E8 /* MBProgressHUD.m */,
+			);
+			path = MBProgessHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1494,6 +1515,7 @@
 				FCF94D3D1C151D30004D86E8 /* LaunchScreen.xib in Resources */,
 				FCF94DBB1C16CCDA004D86E8 /* README.txt in Resources */,
 				FCF94D3A1C151D30004D86E8 /* Images.xcassets in Resources */,
+				FCF94F831C180913004D86E8 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1540,7 @@
 				FCF94F1D1C16CF02004D86E8 /* XMPPRoomHybridStorage.m in Sources */,
 				FCF94E051C16CEBF004D86E8 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				FCF94F231C16CF02004D86E8 /* XMPPMessage+XEP0045.m in Sources */,
+				FCF94F841C180913004D86E8 /* MBProgressHUD.m in Sources */,
 				FCF94F241C16CF02004D86E8 /* XMPPMUC.m in Sources */,
 				FCF94F2B1C16CF02004D86E8 /* XMPPvCardTemp.m in Sources */,
 				FCF94F2C1C16CF02004D86E8 /* XMPPvCardTempAdr.m in Sources */,
@@ -1617,6 +1640,7 @@
 				FCF94F361C16CF02004D86E8 /* XMPPPubSub.m in Sources */,
 				FCF94F3B1C16CF02004D86E8 /* XMPPDateTimeProfiles.m in Sources */,
 				FCF94F431C16CF02004D86E8 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				FCF94F821C180913004D86E8 /* MBProgressHUD+HM.m in Sources */,
 				FCF94F031C16CF02004D86E8 /* XMPPBandwidthMonitor.m in Sources */,
 				FCF94E071C16CEBF004D86E8 /* XMPPPlainAuthentication.m in Sources */,
 				FCF94E0A1C16CEBF004D86E8 /* NSData+XMPP.m in Sources */,
