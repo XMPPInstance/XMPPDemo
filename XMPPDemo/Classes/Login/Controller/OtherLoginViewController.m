@@ -56,7 +56,19 @@
     [defaults synchronize];
     
     AppDelegate * app = [UIApplication sharedApplication].delegate;
-    [app xmppUserLogin];
+    [app xmppUserLogin:^(XMPPResultType type){
+        switch (type) {
+            case XMPPResultTypeLoginSuccess:
+                NSLog(@"登录成功");
+                break;
+                
+            case XMPPResultTypeLoginFailure:
+                NSLog(@"登录失败");
+                break;
+            default:
+                break;
+        }
+    }];
     
     
 }
