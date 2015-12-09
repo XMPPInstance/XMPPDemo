@@ -57,9 +57,9 @@
     // 登录之前给个提示
     [MBProgressHUD showMessage:@"正在登录中......"];
     AppDelegate * app = [UIApplication sharedApplication].delegate;
-    
+    __weak typeof(self) selfWeak = self;
     [app xmppUserLogin:^(XMPPResultType type){
-        [self handleResultType:type];
+        [selfWeak handleResultType:type];
     }];
     
     
@@ -86,6 +86,8 @@
 }
 
 - (void)enterMainPage {
+    // 隐藏模态窗口
+    [self dismissViewControllerAnimated:NO completion:nil];
     // 登录成功 来到主界面
     // 此方法是在子线程中调用,应该在主线程中刷新UI
         UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -98,6 +100,6 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%s",__func__);
+    NSLog(@"dealloc");
 }
 @end
