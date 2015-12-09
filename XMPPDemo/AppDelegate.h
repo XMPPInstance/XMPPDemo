@@ -11,6 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+// 注销
+- (void)logOut;
 @end
 

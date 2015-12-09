@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "AppDelegate.h"
 @interface ViewController ()
 
 @end
@@ -21,5 +21,10 @@
     
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    // 注销
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [app logOut];
+}
 
 @end

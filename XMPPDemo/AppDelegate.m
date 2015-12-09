@@ -105,5 +105,13 @@
     NSLog(@"授权失败 %@",error);
 }
 
-
+#pragma mark 公共方法
+- (void)logOut {
+    // 1 发送离线消息
+    XMPPPresence * offLine = [XMPPPresence presenceWithType:@"unavailable"];
+    
+    [_xmppStream sendElement:offLine];
+    // 2 与服务器断开连接
+    [_xmppStream disconnect];
+}
 @end
