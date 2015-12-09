@@ -53,7 +53,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jlu-O3-ZMF">
                                         <rect key="frame" x="0.0" y="134" width="280" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="登录">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -140,7 +140,6 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNb-uI-OKe" userLabel="用户名">
                                         <rect key="frame" x="0.0" y="19" width="400" height="42"/>
-                                        <color key="backgroundColor" red="0.1576807268" green="0.66666666669999997" blue="0.62636056809999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="vdf-KR-pLn"/>
                                         </constraints>
@@ -149,7 +148,6 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VGa-Y0-jRa" userLabel="密码">
                                         <rect key="frame" x="0.0" y="65" width="400" height="42"/>
-                                        <color key="backgroundColor" red="0.15768072679659656" green="0.66666666666666663" blue="0.62636056813024876" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="CWY-Zf-hL6"/>
                                             <constraint firstAttribute="height" constant="42" id="scx-2F-bzp"/>
@@ -162,29 +160,34 @@
                                             </mask>
                                         </variation>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ny4-bw-FcC">
-                                        <rect key="frame" x="177" y="134" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLv-Vm-xiC">
+                                        <rect key="frame" x="0.0" y="146" width="400" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="iRN-YB-bPw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="1X2-gr-Saw"/>
+                                            <constraint firstAttribute="width" constant="400" id="BPa-jC-EQE"/>
+                                            <constraint firstAttribute="height" constant="42" id="k8R-Gk-pXY"/>
                                         </constraints>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="登录">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginBtnClick" destination="yeC-GC-oDr" eventType="touchUpInside" id="vY7-Dx-lEk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Ny4-bw-FcC" firstAttribute="leading" secondItem="YjE-IN-dSA" secondAttribute="leading" constant="177" id="6Dk-Jh-l5u"/>
                                     <constraint firstItem="VGa-Y0-jRa" firstAttribute="leading" secondItem="YjE-IN-dSA" secondAttribute="leading" id="7cl-8g-UoU"/>
                                     <constraint firstAttribute="trailing" secondItem="JNb-uI-OKe" secondAttribute="trailing" id="9N4-eE-9aT"/>
                                     <constraint firstItem="JNb-uI-OKe" firstAttribute="leading" secondItem="YjE-IN-dSA" secondAttribute="leading" id="BQX-ZZ-ont"/>
                                     <constraint firstItem="JNb-uI-OKe" firstAttribute="top" secondItem="YjE-IN-dSA" secondAttribute="top" constant="19" id="Cty-MV-4Jg"/>
                                     <constraint firstAttribute="width" constant="400" id="Hbn-Id-3do"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ny4-bw-FcC" secondAttribute="trailing" constant="177" id="Osw-PR-iEv"/>
+                                    <constraint firstItem="fLv-Vm-xiC" firstAttribute="leading" secondItem="YjE-IN-dSA" secondAttribute="leading" id="Qkn-Ee-EFT"/>
                                     <constraint firstItem="VGa-Y0-jRa" firstAttribute="top" secondItem="JNb-uI-OKe" secondAttribute="bottom" constant="4" id="Waf-XN-a3O"/>
-                                    <constraint firstItem="Ny4-bw-FcC" firstAttribute="top" secondItem="VGa-Y0-jRa" secondAttribute="bottom" constant="27" id="ZHp-E3-k9i"/>
                                     <constraint firstAttribute="trailing" secondItem="VGa-Y0-jRa" secondAttribute="trailing" id="glK-Wc-Asw"/>
+                                    <constraint firstAttribute="trailing" secondItem="fLv-Vm-xiC" secondAttribute="trailing" id="hQq-4l-zcw"/>
                                     <constraint firstAttribute="height" constant="200" id="iI0-2f-2zy"/>
+                                    <constraint firstItem="fLv-Vm-xiC" firstAttribute="top" secondItem="VGa-Y0-jRa" secondAttribute="bottom" constant="39" id="rig-yE-VZc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -199,7 +202,10 @@
                     <navigationItem key="navigationItem" id="wbj-9A-qk0"/>
                     <connections>
                         <outlet property="leftContraint" destination="kO1-i0-gGY" id="74S-Yl-wun"/>
+                        <outlet property="loginBtn" destination="fLv-Vm-xiC" id="ruM-HQ-irC"/>
+                        <outlet property="pwdField" destination="VGa-Y0-jRa" id="8ZT-t9-oGO"/>
                         <outlet property="rightContraint" destination="DhL-2A-QcX" id="idL-lG-0Eu"/>
+                        <outlet property="userField" destination="JNb-uI-OKe" id="qEK-lp-f3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCZ-xb-6G6" userLabel="First Responder" sceneMemberID="firstResponder"/>

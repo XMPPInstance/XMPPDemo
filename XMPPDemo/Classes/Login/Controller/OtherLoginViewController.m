@@ -14,6 +14,11 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightContraint;
 
+@property (weak, nonatomic) IBOutlet UITextField *userField;
+
+@property (weak, nonatomic) IBOutlet UITextField *pwdField;
+
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @end
 
 @implementation OtherLoginViewController
@@ -27,10 +32,15 @@
         self.rightContraint.constant = 10;
     }
     
+    // 设置textField背景
     
-    
+//    self.userField.background = [UIImage imageNamed:@"operationbox_text"];
+    self.userField.background = [UIImage stretchedImageWithName:@"operationbox_text"];
+    self.pwdField.background = [UIImage stretchedImageWithName:@"operationbox_text"];
+    [self.loginBtn setResizedN_BG:@"fts_green_btn" H_BG:@"fts_green_btn_HL"];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
