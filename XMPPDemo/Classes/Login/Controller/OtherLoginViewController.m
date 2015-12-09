@@ -57,6 +57,7 @@
     // 登录之前给个提示
     [MBProgressHUD showMessage:@"正在登录中......"];
     AppDelegate * app = [UIApplication sharedApplication].delegate;
+    
     [app xmppUserLogin:^(XMPPResultType type){
         [self handleResultType:type];
     }];
@@ -70,6 +71,8 @@
         switch (type) {
             case XMPPResultTypeLoginSuccess:
                 NSLog(@"登录成功");
+                [self enterMainPage];
+                
                 break;
                 
             case XMPPResultTypeLoginFailure:
@@ -82,19 +85,19 @@
     });
 }
 
+- (void)enterMainPage {
+    // 登录成功 来到主界面
+    // 此方法是在子线程中调用,应该在主线程中刷新UI
+        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.view.window.rootViewController = storyBoard.instantiateInitialViewController;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dealloc {
+    NSLog(@"%s",__func__);
 }
-*/
-
 @end
