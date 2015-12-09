@@ -102,6 +102,14 @@
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
     NSLog(@"授权成功");
     [self sendOnlineToHost];
+    // 登录成功 来到主界面
+    // 此方法是在子线程中调用,应该在主线程中刷新UI
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = storyBoard.instantiateInitialViewController;
+    });
+    
+    
 }
 
 #pragma mark 授权失败
