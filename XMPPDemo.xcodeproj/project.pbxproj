@@ -145,6 +145,7 @@
 		FCF94F5A1C16CF02004D86E8 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94EFF1C16CF02004D86E8 /* XMPPMessage+XEP_0333.m */; };
 		FCF94F5B1C16CF02004D86E8 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F021C16CF02004D86E8 /* NSXMLElement+XEP_0335.m */; };
 		FCF94F621C17C67B004D86E8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF94F611C17C67B004D86E8 /* Login.storyboard */; };
+		FCF94F671C17D18F004D86E8 /* OtherLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -440,6 +441,8 @@
 		FCF94F5D1C16CF4F004D86E8 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		FCF94F5E1C16CFCC004D86E8 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FCF94F611C17C67B004D86E8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginViewController.h; sourceTree = "<group>"; };
+		FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1336,6 +1339,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF94F611C17C67B004D86E8 /* Login.storyboard */,
+				FCF94F641C17D12A004D86E8 /* Controller */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1353,6 +1357,15 @@
 			children = (
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		FCF94F641C17D12A004D86E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */,
+				FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1458,6 +1471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF94F671C17D18F004D86E8 /* OtherLoginViewController.m in Sources */,
 				FCF94E0E1C16CEBF004D86E8 /* XMPPIQ.m in Sources */,
 				FCF94F481C16CF02004D86E8 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				FCF94F2D1C16CF02004D86E8 /* XMPPvCardTempAdrTypes.m in Sources */,
