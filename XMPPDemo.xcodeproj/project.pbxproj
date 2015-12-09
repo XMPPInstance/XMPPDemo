@@ -486,6 +486,7 @@
 		FCF94D2B1C151D30004D86E8 /* XMPPDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FCF94F631C17C710004D86E8 /* Others */,
 				FCF94D881C16CBEE004D86E8 /* Classes */,
 				FCF94D301C151D30004D86E8 /* AppDelegate.h */,
 				FCF94D311C151D30004D86E8 /* AppDelegate.m */,
@@ -1345,6 +1346,13 @@
 				FCF94D361C151D30004D86E8 /* Main.storyboard */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		FCF94F631C17C710004D86E8 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
