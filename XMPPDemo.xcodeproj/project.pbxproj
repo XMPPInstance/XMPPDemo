@@ -160,6 +160,7 @@
 		FCF94F941C190DF2004D86E8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F931C190DF2004D86E8 /* LoginViewController.m */; };
 		FCF94F9B1C191109004D86E8 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F9A1C191109004D86E8 /* UserInfo.m */; };
 		FCF94F9E1C195450004D86E8 /* BaseLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */; };
+		FCF94FA11C19617A004D86E8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94FA01C19617A004D86E8 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -485,6 +486,8 @@
 		FCF94F9A1C191109004D86E8 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		FCF94F9C1C195450004D86E8 /* BaseLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoginViewController.h; sourceTree = "<group>"; };
 		FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoginViewController.m; sourceTree = "<group>"; };
+		FCF94F9F1C19617A004D86E8 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		FCF94FA01C19617A004D86E8 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1473,6 +1476,8 @@
 				FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */,
 				FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */,
 				FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */,
+				FCF94F9F1C19617A004D86E8 /* RegisterViewController.h */,
+				FCF94FA01C19617A004D86E8 /* RegisterViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1612,6 +1617,7 @@
 				FCF94E091C16CEBF004D86E8 /* XMPPXOAuth2Google.m in Sources */,
 				FCF94F081C16CF02004D86E8 /* XMPPGroupCoreDataStorageObject.m in Sources */,
 				FCF94F041C16CF02004D86E8 /* XMPPCoreDataStorage.m in Sources */,
+				FCF94FA11C19617A004D86E8 /* RegisterViewController.m in Sources */,
 				FCF94F0D1C16CF02004D86E8 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				FCF94F561C16CF02004D86E8 /* XMPPAttentionModule.m in Sources */,
 				FCF94F471C16CF02004D86E8 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
