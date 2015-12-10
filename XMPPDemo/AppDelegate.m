@@ -149,6 +149,11 @@
     // 3 回到登录界面
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     self.window.rootViewController = storyBoard.instantiateInitialViewController;
+    
+    // 4 更新用户的登录状态
+    [UserInfo defaultUserInfo].loginStatus = NO;
+    [[UserInfo defaultUserInfo] saveUserInfoToSandbox];
+    
 }
 // 连接主机 成功后发送密码
 - (void)xmppUserLogin:(XMPPResultBlock)resultBlock {
