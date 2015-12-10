@@ -7,7 +7,7 @@
 //
 
 #import "RegisterViewController.h"
-
+#import "AppDelegate.h"
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftContraint;
 
@@ -57,6 +57,17 @@
 */
 
 - (IBAction)registerBtnClick:(id)sender {
+    // 1 把用户注册的数据保存单例
+    UserInfo * userInfo = [UserInfo defaultUserInfo];
+    userInfo.registerUser = self.userField.text;
+    userInfo.registerPwd = self.pwdField.text;
+    // 2 调用AppDelegate的xmppUserRegister
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    app.registerOperation = YES;
+    [app xmppUserRegister:^(XMPPResultType type) {
+        
+    }];
+    
 }
 
 - (IBAction)cancelBtnClick:(id)sender {

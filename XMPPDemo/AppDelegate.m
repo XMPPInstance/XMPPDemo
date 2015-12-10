@@ -69,7 +69,15 @@
     }
     // 设置登录用户JID
     // resource 标识用户登录的客户端 iPhone Android WindowsPhone
-    NSString * user = [UserInfo defaultUserInfo].user;
+    
+    
+    NSString * user = nil;
+    
+    if (self.registerOperation) {
+        user = [UserInfo defaultUserInfo].registerUser;
+    } else {
+        user = [UserInfo defaultUserInfo].user;
+    }
   
     
     XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"teacher.local" resource:@"iPhone"];
@@ -104,7 +112,13 @@
 #pragma mark 与主机连接成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender {
     WCLog(@"与主机连接成功");
-    [self sendPwdToHost];
+    if (self.isRegisterOperation) {// 注册操作 发送注册的密码
+        NSString * pwd = [UserInfo defaultUserInfo].pwd;
+        [_xmppStream registerWithPassword:pwd error:nil];
+    } else {// 登录操作
+        // 主机连接成功后,发送密码进行授权
+        [self sendPwdToHost];
+    }
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error {
@@ -141,6 +155,16 @@
     }
 }
 
+#pragma mark - 注册成功
+- (void)xmppStreamDidRegister:(XMPPStream *)sender {
+    WCLog(@"注册成功");
+}
+
+#pragma mark - 注册失败
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error {
+    WCLog(@"注册失败 %@",error);
+}
+
 #pragma mark 公共方法
 - (void)xmppUserLogOut {
     // 1 发送离线消息
@@ -161,18 +185,25 @@
 // 连接主机 成功后发送密码
 - (void)xmppUserLogin:(XMPPResultBlock)resultBlock {
     // 先把Block保存起来
-    
     _resultBlock = resultBlock;
-    
-    
+
     // 如果以前连接过服务,要断开
 //    if (_xmppStream.isConnected) {
         [_xmppStream disconnect];
 //    }
-
-    
-    // 连接主机 成功后发送密码
+    // 连接主机 成功后发送登录密码
     [self connectToHost];
 }
 
+- (void)xmppUserRegister:(XMPPResultBlock)resultBlock {
+    // 先把Block保存起来
+    _resultBlock = resultBlock;
+    
+    // 如果以前连接过服务,要断开
+    //    if (_xmppStream.isConnected) {
+    [_xmppStream disconnect];
+    //    }
+    // 连接主机 成功后发送注册密码
+    [self connectToHost];
+}
 @end
