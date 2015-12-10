@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "XMPP.h"
+#import "WCNavigationController.h"
 /*
  // 在appDelegate中实现登录
  
@@ -38,6 +39,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [self connectToHost];
+    [WCNavigationController setupNavTheme];
     return YES;
 }
 #pragma mark 私有方法
@@ -129,13 +131,16 @@
 }
 
 #pragma mark 公共方法
-- (void)logOut {
+- (void)xmppUserLogOut {
     // 1 发送离线消息
     XMPPPresence * offLine = [XMPPPresence presenceWithType:@"unavailable"];
     
     [_xmppStream sendElement:offLine];
     // 2 与服务器断开连接
     [_xmppStream disconnect];
+    // 3 回到登录界面
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    self.window.rootViewController = storyBoard.instantiateInitialViewController;
 }
 // 连接主机 成功后发送密码
 - (void)xmppUserLogin:(XMPPResultBlock)resultBlock {

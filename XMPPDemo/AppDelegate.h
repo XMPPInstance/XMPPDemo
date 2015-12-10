@@ -21,6 +21,6 @@ typedef void (^XMPPResultBlock)(XMPPResultType type); // XMPP 请求结果的Blo
 - (void)xmppUserLogin:(XMPPResultBlock)resultBlock;
 
 // 注销
-- (void)logOut;
+- (void)xmppUserLogOut;
 @end
 

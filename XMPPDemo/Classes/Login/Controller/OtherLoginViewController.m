@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 判断当前设备的类型 改变当前左右两边约束的距离
-    
+    self.title = @"其他方式登录";
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         self.leftContraint.constant = 10;
         self.rightContraint.constant = 10;
@@ -99,6 +99,11 @@
     // 此方法是在子线程中调用,应该在主线程中刷新UI
         UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.view.window.rootViewController = storyBoard.instantiateInitialViewController;
+}
+
+
+- (IBAction)cancelBtnClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

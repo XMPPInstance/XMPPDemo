@@ -101,7 +101,7 @@
                             <constraint firstItem="w5o-Ya-tQd" firstAttribute="top" secondItem="KWY-bq-8ju" secondAttribute="bottom" constant="30" id="xa8-w9-n5s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oXP-iA-K19"/>
+                    <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hK-u4-Ech" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +110,7 @@
         <!--其他方式登录Nav-->
         <scene sceneID="9bT-2s-tSR">
             <objects>
-                <navigationController id="1zu-hR-Wnb" userLabel="其他方式登录Nav" sceneMemberID="viewController">
+                <navigationController id="1zu-hR-Wnb" userLabel="其他方式登录Nav" customClass="WCNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DVD-ob-tjH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -199,7 +199,13 @@
                             <constraint firstItem="YjE-IN-dSA" firstAttribute="leading" secondItem="4Kj-fQ-iPl" secondAttribute="leadingMargin" constant="84" id="kO1-i0-gGY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wbj-9A-qk0"/>
+                    <navigationItem key="navigationItem" id="wbj-9A-qk0">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="Jcv-lD-0L5">
+                            <connections>
+                                <action selector="cancelBtnClick:" destination="yeC-GC-oDr" id="a4p-3s-igd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="leftContraint" destination="kO1-i0-gGY" id="74S-Yl-wun"/>
                         <outlet property="loginBtn" destination="fLv-Vm-xiC" id="ruM-HQ-irC"/>
@@ -210,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCZ-xb-6G6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179" y="217"/>
+            <point key="canvasLocation" x="1188" y="111"/>
         </scene>
     </scenes>
     <resources>
