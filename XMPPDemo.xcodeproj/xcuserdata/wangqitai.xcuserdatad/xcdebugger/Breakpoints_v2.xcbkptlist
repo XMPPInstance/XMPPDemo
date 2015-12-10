@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XMPPDemo/AppDelegate.m"
-            timestampString = "471408205.367541"
+            timestampString = "471409672.728931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-xmppStreamDidConnect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XMPPDemo/AppDelegate.m"
-            timestampString = "471408205.367541"
+            timestampString = "471409672.728931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-xmppStreamDidDisconnect:withError:"
             landmarkType = "5">
          </BreakpointContent>

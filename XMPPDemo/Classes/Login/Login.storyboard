@@ -101,7 +101,7 @@
                             <constraint firstItem="w5o-Ya-tQd" firstAttribute="top" secondItem="KWY-bq-8ju" secondAttribute="bottom" constant="30" id="xa8-w9-n5s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19" customClass="lo"/>
+                    <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19"/>
                     <connections>
                         <outlet property="userLabel" destination="6Bw-Kq-S4p" id="Pek-Lb-O8F"/>
                     </connections>

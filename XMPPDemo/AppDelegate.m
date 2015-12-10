@@ -47,6 +47,9 @@
     if ([UserInfo defaultUserInfo].loginStatus) {
         UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = storyBoard.instantiateInitialViewController;
+        // 自动登录服务器
+        [self xmppUserLogin:nil];
+    
     }
     return YES;
 }
