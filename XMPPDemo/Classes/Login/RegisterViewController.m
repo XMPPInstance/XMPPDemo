@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "AppDelegate.h"
+#import "UITextField+WF.h"
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftContraint;
 
@@ -57,12 +58,19 @@
 */
 
 - (IBAction)registerBtnClick:(id)sender {
+    
+    [self.view endEditing:YES];
+    // 判断用户输入的是否为手机号
+    if (![self.userField isTelphoneNum]) {
+        [MBProgressHUD showError:@"请输入正确的手机号码" toView:self.view];
+        return;
+    }
+    
     // 1 把用户注册的数据保存单例
     UserInfo * userInfo = [UserInfo defaultUserInfo];
     userInfo.registerUser = self.userField.text;
     userInfo.registerPwd = self.pwdField.text;
-    
-    [self.view endEditing:YES];
+ 
     // 2 调用AppDelegate的xmppUserRegister
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     app.registerOperation = YES;
@@ -100,5 +108,10 @@
 
 - (IBAction)cancelBtnClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)textChange {
+    WCLog(@"xxx");
+    BOOL enabled = (self.userField.text.length!=0 && self.pwdField.text.length != 0);
+    self.registerBtn.enabled = enabled;
 }
 @end
