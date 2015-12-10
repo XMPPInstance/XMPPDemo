@@ -61,13 +61,41 @@
     UserInfo * userInfo = [UserInfo defaultUserInfo];
     userInfo.registerUser = self.userField.text;
     userInfo.registerPwd = self.pwdField.text;
+    
+    [self.view endEditing:YES];
     // 2 调用AppDelegate的xmppUserRegister
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     app.registerOperation = YES;
+    // 提示
+    [MBProgressHUD showMessage:@"正在注册中......" toView:self.view];
+    __weak typeof(self) selfVc = self;
     [app xmppUserRegister:^(XMPPResultType type) {
-        
+        [selfVc handleResultType:type];
     }];
     
+}
+
+- (void)handleResultType:(XMPPResultType)type {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view];
+        switch (type) {
+            case XMPPResultTypeNetError:
+                [MBProgressHUD showError:@"网络不稳定" toView:self.view];
+                break;
+            case XMPPResultTypeRegisterSuccess:
+                [MBProgressHUD showError:@"注册成功" toView:self.view];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                if ([self.delegate respondsToSelector:@selector(registerViewControllerDidFinishRegister)]) {
+                    [self.delegate registerViewControllerDidFinishRegister];
+                }
+                break;
+            case XMPPResultTypeRegisterFailure:
+                [MBProgressHUD showError:@"注册失败,用户名重复" toView:self.view];
+                break;
+            default:
+                break;
+        }
+    });
 }
 
 - (IBAction)cancelBtnClick:(id)sender {

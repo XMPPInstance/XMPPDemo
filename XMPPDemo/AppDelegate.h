@@ -11,7 +11,9 @@
 typedef enum {
     XMPPResultTypeLoginSuccess,// 登录成功
     XMPPResultTypeLoginFailure,// 登录失败
-    XMPPResultTypeNetError // 网络错误
+    XMPPResultTypeNetError, // 网络错误
+    XMPPResultTypeRegisterSuccess,// 注册成功
+    XMPPResultTypeRegisterFailure // 注册失败
 }XMPPResultType;
 typedef void (^XMPPResultBlock)(XMPPResultType type); // XMPP 请求结果的Block
 

@@ -7,8 +7,9 @@
 //
 
 #import "LoginViewController.h"
-
-@interface LoginViewController ()
+#import "RegisterViewController.h"
+#import "WCNavigationController.h"
+@interface LoginViewController ()<RegisterViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -50,14 +51,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    // 获取注册控制器
+    id destVc = segue.destinationViewController;
+    
+    if ([destVc isKindOfClass:[WCNavigationController class]]) {
+        WCNavigationController * nav = destVc;
+        // 获取根控制器
+        RegisterViewController * registerVc = (RegisterViewController *)nav.topViewController;
+        registerVc.delegate = self;
+    }
+    
+    
 }
-*/
-
+#pragma mark registerViewController的代理
+- (void)registerViewControllerDidFinishRegister {
+    // 完成注册 userLabel显示注册的用户名
+    self.userLabel.text = [UserInfo defaultUserInfo].registerUser;
+    [MBProgressHUD showSuccess:@"请重新输入密码进行登录" toView:self.view];
+    
+}
 @end

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController
+#import "RegisterViewController.h"
 
+@protocol RegisterViewControllerDelegate <NSObject>
+// 完成注册
+- (void)registerViewControllerDidFinishRegister;
+
+@end
+@interface RegisterViewController : UIViewController
+@property (nonatomic,assign) id<RegisterViewControllerDelegate> delegate;
 @end
