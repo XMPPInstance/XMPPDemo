@@ -43,6 +43,11 @@
     [WCNavigationController setupNavTheme];
     // 从沙盒里加载用户的数据到单例
     [[UserInfo defaultUserInfo] loadUserInfoFromSandbox];
+    // 判断用户的登录状态,YES 直接来到主界面
+    if ([UserInfo defaultUserInfo].loginStatus) {
+        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = storyBoard.instantiateInitialViewController;
+    }
     return YES;
 }
 #pragma mark 私有方法

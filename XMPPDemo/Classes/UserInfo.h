@@ -11,6 +11,11 @@
 @interface UserInfo : NSObject
 @property (nonatomic,copy) NSString * user;
 @property (nonatomic,copy) NSString * pwd;
+
+/**
+ YES 代表登陆过 /NO 代表 注销
+ */
+@property (nonatomic,assign) BOOL loginStatus;
 + (UserInfo *)defaultUserInfo;
 - (void)saveUserInfoToSandbox;
 - (void)loadUserInfoFromSandbox;

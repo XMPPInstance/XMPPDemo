@@ -8,6 +8,7 @@
 
 #import "UserInfo.h"
 #define UserKey @"user"
+#define LoginStatus @"loginStatus"
 @implementation UserInfo
 + (UserInfo *)defaultUserInfo {
     static UserInfo * userInfo = nil;
@@ -20,12 +21,14 @@
 - (void)saveUserInfoToSandbox {
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.user forKey:UserKey];
-    
+    [userDefaults setBool:self.loginStatus forKey:LoginStatus];
+    [userDefaults synchronize];
 }
 
 - (void)loadUserInfoFromSandbox {
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     self.user = [userDefaults objectForKey:UserKey];
+    self.loginStatus = [userDefaults boolForKey:LoginStatus];
 }
 
 @end

@@ -119,6 +119,8 @@
 }
 
 - (void)enterMainPage {
+    [UserInfo defaultUserInfo].loginStatus = YES;
+    
     // 把用户登录成功的数据,保存到沙盒
     [[UserInfo defaultUserInfo] saveUserInfoToSandbox];
     
