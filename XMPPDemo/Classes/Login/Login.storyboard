@@ -25,7 +25,7 @@
         <!--登录-->
         <scene sceneID="kz2-Jj-NhL">
             <objects>
-                <viewController id="cuv-bK-zka" userLabel="登录" sceneMemberID="viewController">
+                <viewController id="cuv-bK-zka" userLabel="登录" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SfZ-RN-YBH"/>
                         <viewControllerLayoutGuide type="bottom" id="w5o-Ya-tQd"/>
@@ -101,11 +101,14 @@
                             <constraint firstItem="w5o-Ya-tQd" firstAttribute="top" secondItem="KWY-bq-8ju" secondAttribute="bottom" constant="30" id="xa8-w9-n5s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19"/>
+                    <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19" customClass="lo"/>
+                    <connections>
+                        <outlet property="userLabel" destination="6Bw-Kq-S4p" id="Pek-Lb-O8F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hK-u4-Ech" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="-288"/>
+            <point key="canvasLocation" x="573" y="-417"/>
         </scene>
         <!--其他方式登录Nav-->
         <scene sceneID="9bT-2s-tSR">

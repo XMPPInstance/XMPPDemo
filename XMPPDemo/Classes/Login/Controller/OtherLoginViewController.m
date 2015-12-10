@@ -8,6 +8,7 @@
 
 #import "OtherLoginViewController.h"
 #import "AppDelegate.h"
+#import "UserInfo.h"
 @interface OtherLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftContraint;
@@ -40,21 +41,19 @@
     [self.loginBtn setResizedN_BG:@"fts_green_btn" H_BG:@"fts_green_btn_HL"];
     
 }
+
 - (IBAction)loginBtnClick {
     // 登录
     /*官方的登录实现
-     * 1 把用户名和密码放在沙盒里
+     * 1 把用户名和密码放在User单例里
      * 2 调用AppDelegate的一个connect 连接服务并登录
      *
      */
-    NSString * user = self.userField.text;
-    NSString * pwd = self.pwdField.text;
     
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:user forKey:@"user"];
-    [defaults setObject:pwd forKey:@"pwd"];
-    [defaults synchronize];
-    
+    UserInfo * userInfo = [UserInfo defaultUserInfo];
+    userInfo.user = self.userField.text;
+    userInfo.pwd = self.pwdField.text;
+    // 隐藏键盘
     [self.view endEditing:YES];
     
     // 登录之前给个提示
@@ -63,10 +62,37 @@
     __weak typeof(self) selfWeak = self;
     [app xmppUserLogin:^(XMPPResultType type){
         [selfWeak handleResultType:type];
-    }];
-    
-    
+    }];  
 }
+
+
+//- (IBAction)loginBtnClick {
+//    // 登录
+//    /*官方的登录实现
+//     * 1 把用户名和密码放在沙盒里
+//     * 2 调用AppDelegate的一个connect 连接服务并登录
+//     *
+//     */
+//    NSString * user = self.userField.text;
+//    NSString * pwd = self.pwdField.text;
+//    
+//    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:user forKey:@"user"];
+//    [defaults setObject:pwd forKey:@"pwd"];
+//    [defaults synchronize];
+//    
+//    [self.view endEditing:YES];
+//    
+//    // 登录之前给个提示
+//    [MBProgressHUD showMessage:@"正在登录中......" toView:self.view];
+//    AppDelegate * app = [UIApplication sharedApplication].delegate;
+//    __weak typeof(self) selfWeak = self;
+//    [app xmppUserLogin:^(XMPPResultType type){
+//        [selfWeak handleResultType:type];
+//    }];
+//    
+//    
+//}
 
 - (void)handleResultType:(XMPPResultType)type {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -93,6 +119,9 @@
 }
 
 - (void)enterMainPage {
+    // 把用户登录成功的数据,保存到沙盒
+    [[UserInfo defaultUserInfo] saveUserInfoToSandbox];
+    
     // 隐藏模态窗口
     [self dismissViewControllerAnimated:NO completion:nil];
     // 登录成功 来到主界面

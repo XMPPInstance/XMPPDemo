@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "XMPP.h"
 #import "WCNavigationController.h"
+
 /*
  // 在appDelegate中实现登录
  
@@ -40,6 +41,8 @@
     // Override point for customization after application launch.
 //    [self connectToHost];
     [WCNavigationController setupNavTheme];
+    // 从沙盒里加载用户的数据到单例
+    [[UserInfo defaultUserInfo] loadUserInfoFromSandbox];
     return YES;
 }
 #pragma mark 私有方法
@@ -58,8 +61,8 @@
     }
     // 设置登录用户JID
     // resource 标识用户登录的客户端 iPhone Android WindowsPhone
-    NSString * user = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
-    
+    NSString * user = [UserInfo defaultUserInfo].user;
+  
     
     XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"teacher.local" resource:@"iPhone"];
     _xmppStream.myJID = myJID;
@@ -74,7 +77,7 @@
     WCLog(@"再发送密码授权");
     NSError * error = nil;
     // 从沙盒获取密码
-    NSString * pwd = [[NSUserDefaults standardUserDefaults] objectForKey:@"pwd"];
+    NSString * pwd = [UserInfo defaultUserInfo].pwd;
     [_xmppStream authenticateWithPassword:pwd error:&error];
     if (error) {
         WCLog(@"%@",error);

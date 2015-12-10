@@ -157,6 +157,8 @@
 		FCF94F841C180913004D86E8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F811C180913004D86E8 /* MBProgressHUD.m */; };
 		FCF94F8C1C18202F004D86E8 /* WCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F8B1C18202F004D86E8 /* WCNavigationController.m */; };
 		FCF94F901C1908C0004D86E8 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F8F1C1908C0004D86E8 /* MeViewController.m */; };
+		FCF94F941C190DF2004D86E8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F931C190DF2004D86E8 /* LoginViewController.m */; };
+		FCF94F9B1C191109004D86E8 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F9A1C191109004D86E8 /* UserInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -476,6 +478,10 @@
 		FCF94F8B1C18202F004D86E8 /* WCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCNavigationController.m; sourceTree = "<group>"; };
 		FCF94F8E1C1908C0004D86E8 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		FCF94F8F1C1908C0004D86E8 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		FCF94F921C190DF2004D86E8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		FCF94F931C190DF2004D86E8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FCF94F991C191109004D86E8 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		FCF94F9A1C191109004D86E8 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1374,6 +1380,7 @@
 		FCF94F5F1C17C5F6004D86E8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FCF94F911C190DC1004D86E8 /* Controllers */,
 				FCF94F611C17C67B004D86E8 /* Login.storyboard */,
 				FCF94F641C17D12A004D86E8 /* Controller */,
 			);
@@ -1440,6 +1447,7 @@
 		FCF94F851C181ECB004D86E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCF94F951C190F2E004D86E8 /* Singleton */,
 				FCF94F861C181ED4004D86E8 /* Controllers */,
 			);
 			name = Common;
@@ -1461,6 +1469,24 @@
 				FCF94F8F1C1908C0004D86E8 /* MeViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FCF94F911C190DC1004D86E8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94F921C190DF2004D86E8 /* LoginViewController.h */,
+				FCF94F931C190DF2004D86E8 /* LoginViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FCF94F951C190F2E004D86E8 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				FCF94F991C191109004D86E8 /* UserInfo.h */,
+				FCF94F9A1C191109004D86E8 /* UserInfo.m */,
+			);
+			name = Singleton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1571,6 +1597,7 @@
 				FCF94E0E1C16CEBF004D86E8 /* XMPPIQ.m in Sources */,
 				FCF94F481C16CF02004D86E8 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				FCF94F2D1C16CF02004D86E8 /* XMPPvCardTempAdrTypes.m in Sources */,
+				FCF94F941C190DF2004D86E8 /* LoginViewController.m in Sources */,
 				FCF94F1D1C16CF02004D86E8 /* XMPPRoomHybridStorage.m in Sources */,
 				FCF94E051C16CEBF004D86E8 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				FCF94F231C16CF02004D86E8 /* XMPPMessage+XEP0045.m in Sources */,
@@ -1639,6 +1666,7 @@
 				FCF94F311C16CF02004D86E8 /* XMPPvCardTempModule.m in Sources */,
 				FCF94F401C16CF02004D86E8 /* XMPPCapabilities.xcdatamodel in Sources */,
 				FCF94F151C16CF02004D86E8 /* XMPPIQ+LastActivity.m in Sources */,
+				FCF94F9B1C191109004D86E8 /* UserInfo.m in Sources */,
 				FCF94F7A1C17D4E2004D86E8 /* UITextField+WF.m in Sources */,
 				FCF94DB81C16CCD9004D86E8 /* DDTTYLogger.m in Sources */,
 				FCF94F781C17D4E2004D86E8 /* UIScreen+WF.m in Sources */,
