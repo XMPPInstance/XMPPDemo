@@ -159,6 +159,7 @@
 		FCF94F901C1908C0004D86E8 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F8F1C1908C0004D86E8 /* MeViewController.m */; };
 		FCF94F941C190DF2004D86E8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F931C190DF2004D86E8 /* LoginViewController.m */; };
 		FCF94F9B1C191109004D86E8 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F9A1C191109004D86E8 /* UserInfo.m */; };
+		FCF94F9E1C195450004D86E8 /* BaseLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,8 +455,8 @@
 		FCF94F5D1C16CF4F004D86E8 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		FCF94F5E1C16CFCC004D86E8 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FCF94F611C17C67B004D86E8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginViewController.h; sourceTree = "<group>"; };
-		FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginViewController.m; sourceTree = "<group>"; };
+		FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherLoginViewController.h; path = Controller/OtherLoginViewController.h; sourceTree = "<group>"; };
+		FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherLoginViewController.m; path = Controller/OtherLoginViewController.m; sourceTree = "<group>"; };
 		FCF94F691C17D4E2004D86E8 /* CategoryWF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryWF.h; sourceTree = "<group>"; };
 		FCF94F6A1C17D4E2004D86E8 /* UIButton+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WF.h"; sourceTree = "<group>"; };
 		FCF94F6B1C17D4E2004D86E8 /* UIButton+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WF.m"; sourceTree = "<group>"; };
@@ -482,6 +483,8 @@
 		FCF94F931C190DF2004D86E8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FCF94F991C191109004D86E8 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		FCF94F9A1C191109004D86E8 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		FCF94F9C1C195450004D86E8 /* BaseLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLoginViewController.h; sourceTree = "<group>"; };
+		FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1382,7 +1385,6 @@
 			children = (
 				FCF94F911C190DC1004D86E8 /* Controllers */,
 				FCF94F611C17C67B004D86E8 /* Login.storyboard */,
-				FCF94F641C17D12A004D86E8 /* Controller */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1401,15 +1403,6 @@
 			children = (
 			);
 			path = Others;
-			sourceTree = "<group>";
-		};
-		FCF94F641C17D12A004D86E8 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */,
-				FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		FCF94F681C17D4E2004D86E8 /* Category */ = {
@@ -1476,6 +1469,10 @@
 			children = (
 				FCF94F921C190DF2004D86E8 /* LoginViewController.h */,
 				FCF94F931C190DF2004D86E8 /* LoginViewController.m */,
+				FCF94F9C1C195450004D86E8 /* BaseLoginViewController.h */,
+				FCF94F9D1C195450004D86E8 /* BaseLoginViewController.m */,
+				FCF94F651C17D18F004D86E8 /* OtherLoginViewController.h */,
+				FCF94F661C17D18F004D86E8 /* OtherLoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1708,6 +1705,7 @@
 				FCF94E071C16CEBF004D86E8 /* XMPPPlainAuthentication.m in Sources */,
 				FCF94E0A1C16CEBF004D86E8 /* NSData+XMPP.m in Sources */,
 				FCF94F1E1C16CF02004D86E8 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
+				FCF94F9E1C195450004D86E8 /* BaseLoginViewController.m in Sources */,
 				FCF94DBE1C16CCDA004D86E8 /* DDXMLElement.m in Sources */,
 				FCF94F8C1C18202F004D86E8 /* WCNavigationController.m in Sources */,
 				FCF94F371C16CF02004D86E8 /* TURNSocket.m in Sources */,

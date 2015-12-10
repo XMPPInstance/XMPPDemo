@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  BaseLoginViewController.h
 //  XMPPDemo
 //
 //  Created by 王亓泰 on 15/12/10.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseLoginViewController.h"
-@interface LoginViewController : BaseLoginViewController
 
+@interface BaseLoginViewController : UIViewController
+// 供子类调用
+- (void)login;
 @end

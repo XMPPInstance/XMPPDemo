@@ -46,7 +46,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jED-jC-gcb">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jED-jC-gcb">
                                         <rect key="frame" x="0.0" y="103" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -56,6 +56,9 @@
                                         <state key="normal" title="登录">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginBtnClick:" destination="cuv-bK-zka" eventType="touchUpInside" id="Yyo-W3-ume"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1K-T8-bW0">
                                         <rect key="frame" x="51" y="172" width="30" height="30"/>
@@ -103,6 +106,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="oXP-iA-K19"/>
                     <connections>
+                        <outlet property="loginBtn" destination="Jlu-O3-ZMF" id="918-Rj-Cic"/>
+                        <outlet property="pwdField" destination="jED-jC-gcb" id="8o1-n3-kqm"/>
                         <outlet property="userLabel" destination="6Bw-Kq-S4p" id="Pek-Lb-O8F"/>
                     </connections>
                 </viewController>
