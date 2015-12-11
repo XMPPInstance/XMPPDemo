@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2C5C9B95-E3B9-46F6-A3A2-C81CC7DA653D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>XMPPDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FD22A7EA6F8D6B314C951918B18054961B326954</key>
 		<string>https://github.com/XMPPInstance/XMPPDemo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>XMPPDemo.xcodeproj/project.xcworkspace</string>
+	<string>XMPPDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FD22A7EA6F8D6B314C951918B18054961B326954</key>

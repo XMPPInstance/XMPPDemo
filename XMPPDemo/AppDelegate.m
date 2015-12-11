@@ -80,9 +80,9 @@
     }
   
     
-    XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"teacher.local" resource:@"iPhone"];
+    XMPPJID * myJID = [XMPPJID jidWithUser:user domain:@"swkits.com" resource:@"iPhone"];
     _xmppStream.myJID = myJID;
-    _xmppStream.hostPort = 15222;
+    _xmppStream.hostPort = 5222;
     NSError * error = nil;
     if ([_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error]) {
         WCLog(@"%@",error);

@@ -64,11 +64,12 @@
     if ([destVc isKindOfClass:[WCNavigationController class]]) {
         WCNavigationController * nav = destVc;
         // 获取根控制器
-        RegisterViewController * registerVc = (RegisterViewController *)nav.topViewController;
-        registerVc.delegate = self;
+        if ([nav.topViewController isKindOfClass:[RegisterViewController class]]) {
+            RegisterViewController * registerVc = (RegisterViewController *)nav.topViewController;
+            registerVc.delegate = self;
+        }
     }
-    
-    
+
 }
 #pragma mark registerViewController的代理
 - (void)registerViewControllerDidFinishRegister {
