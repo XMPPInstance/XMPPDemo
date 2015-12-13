@@ -10,6 +10,7 @@
 		FC0F875A1C1C5F7B009048C7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0F87591C1C5F7B009048C7 /* libxml2.tbd */; };
 		FC0F875C1C1C5F84009048C7 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0F875B1C1C5F84009048C7 /* libresolv.tbd */; };
 		FC59C0731C1D5DE700D9350F /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0721C1D5DE700D9350F /* XMPPTool.m */; };
+		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
 		FCF94D2F1C151D30004D86E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D2E1C151D30004D86E8 /* main.m */; };
 		FCF94D321C151D30004D86E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D311C151D30004D86E8 /* AppDelegate.m */; };
 		FCF94D351C151D30004D86E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D341C151D30004D86E8 /* ViewController.m */; };
@@ -179,6 +180,8 @@
 		FC0F875B1C1C5F84009048C7 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		FC59C0711C1D5DE700D9350F /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		FC59C0721C1D5DE700D9350F /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
+		FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		FCF94D291C151D30004D86E8 /* XMPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF94D2D1C151D30004D86E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCF94D2E1C151D30004D86E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1466,6 +1469,8 @@
 			children = (
 				FCF94F8E1C1908C0004D86E8 /* MeViewController.h */,
 				FCF94F8F1C1908C0004D86E8 /* MeViewController.m */,
+				FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */,
+				FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1649,6 +1654,7 @@
 				FCF94F391C16CF02004D86E8 /* XMPPMessage+XEP_0066.m in Sources */,
 				FCF94F461C16CF02004D86E8 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				FCF94E0D1C16CEBF004D86E8 /* XMPPElement.m in Sources */,
+				FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */,
 				FCF94F191C16CF02004D86E8 /* XMPPRoomCoreDataStorage.m in Sources */,
 				FCF94F0A1C16CF02004D86E8 /* XMPPRoster.xcdatamodel in Sources */,
 				FCF94F091C16CF02004D86E8 /* XMPPResourceCoreDataStorageObject.m in Sources */,
