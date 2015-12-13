@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "XMPP.h"
 #import "WCNavigationController.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
 
 /*
  // 在appDelegate中实现登录
@@ -27,6 +29,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [self connectToHost];
+    
+    NSString * path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSLog(@"%@",path);
+    
+    //打开XMPP的日志
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [WCNavigationController setupNavTheme];
     // 从沙盒里加载用户的数据到单例
     [[UserInfo defaultUserInfo] loadUserInfoFromSandbox];

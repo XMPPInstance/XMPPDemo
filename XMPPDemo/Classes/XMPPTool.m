@@ -7,10 +7,15 @@
 //
 
 #import "XMPPTool.h"
-#import "XMPP.h"
+
 @interface XMPPTool ()<XMPPStreamDelegate> {
     XMPPStream * _xmppStream;
     XMPPResultBlock _resultBlock;
+    // 电子名片
+   
+    XMPPvCardCoreDataStorage * _vCardStorage; // 电子名片的存储
+    
+    XMPPvCardAvatarModule * _avatar; // 电子名片的头像
 }
 // 1 初始化XMPPStream
 - (void)setUpXMPPStream;
@@ -34,6 +39,16 @@
 #pragma mark 私有方法
 - (void)setUpXMPPStream {
     _xmppStream = [[XMPPStream alloc] init];
+    // 添加电子名片模块
+    _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    _vCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:_vCardStorage];
+    
+    // 激活
+    [_vCard activate:_xmppStream];
+    // 添加头像模块
+    _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
+    [_avatar activate:_xmppStream];
+    
     
     // 设置代理
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
