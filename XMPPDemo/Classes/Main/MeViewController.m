@@ -7,7 +7,7 @@
 //
 
 #import "MeViewController.h"
-#import "AppDelegate.h"
+#import "XMPPTool.h"
 @interface MeViewController ()
 
 - (IBAction)logOutBtnClick:(id)sender;
@@ -101,8 +101,8 @@
 
 
 - (IBAction)logOutBtnClick:(id)sender {
-    AppDelegate * app = [UIApplication sharedApplication].delegate;
-    [app xmppUserLogOut];
+//    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [[XMPPTool defaultTool] xmppUserLogOut];
 
 }
 @end

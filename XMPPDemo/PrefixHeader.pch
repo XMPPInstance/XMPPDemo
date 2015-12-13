@@ -15,6 +15,7 @@
 #import "CategoryWF.h"
 #import "MBProgressHUD+HM.h"
 #import "UserInfo.h"
+#import "XMPPTool.h"
 
 #ifdef DEBUG
 #define WCLog(...) NSLog(@"%s %d \n%@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])

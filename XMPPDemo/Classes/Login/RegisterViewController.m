@@ -72,12 +72,13 @@
     userInfo.registerPwd = self.pwdField.text;
  
     // 2 调用AppDelegate的xmppUserRegister
-    AppDelegate * app = [UIApplication sharedApplication].delegate;
-    app.registerOperation = YES;
+//    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    
+    [XMPPTool defaultTool].registerOperation = YES;
     // 提示
     [MBProgressHUD showMessage:@"正在注册中......" toView:self.view];
     __weak typeof(self) selfVc = self;
-    [app xmppUserRegister:^(XMPPResultType type) {
+    [[XMPPTool defaultTool] xmppUserRegister:^(XMPPResultType type) {
         [selfVc handleResultType:type];
     }];
     
