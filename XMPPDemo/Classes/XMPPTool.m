@@ -58,6 +58,26 @@
     
 }
 
+#pragma mark 释放XMPPStream相关的资源
+- (void)tearDownXMPPStream {
+    // 移除代理
+    [_xmppStream removeDelegate:self];
+    // 停止模块
+    [_reconnect deactivate];
+    [_vCard deactivate];
+    [_avatar deactivate];
+    // 断开连接
+    [_xmppStream disconnect];
+    
+    // 清空资源
+    _reconnect = nil;
+    _vCard = nil;
+    _vCardStorage = nil;
+    _avatar = nil;
+    _xmppStream = nil;
+    
+}
+
 - (void)connectToHost {
     WCLog(@"开始连接到服务器");
     if (!_xmppStream) {
@@ -208,6 +228,10 @@
     //    }
     // 连接主机 成功后发送注册密码
     [self connectToHost];
+}
+
+- (void)dealloc {
+    [self tearDownXMPPStream];
 }
 
 @end
