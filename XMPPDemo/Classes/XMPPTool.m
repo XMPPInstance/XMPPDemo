@@ -11,8 +11,8 @@
 @interface XMPPTool ()<XMPPStreamDelegate> {
     XMPPStream * _xmppStream;
     XMPPResultBlock _resultBlock;
+    XMPPReconnect * _reconnect;
     // 电子名片
-   
     XMPPvCardCoreDataStorage * _vCardStorage; // 电子名片的存储
     
     XMPPvCardAvatarModule * _avatar; // 电子名片的头像
@@ -39,6 +39,9 @@
 #pragma mark 私有方法
 - (void)setUpXMPPStream {
     _xmppStream = [[XMPPStream alloc] init];
+    _reconnect = [[XMPPReconnect alloc] init];
+    [_reconnect activate:_xmppStream];
+    
     // 添加电子名片模块
     _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
     _vCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:_vCardStorage];
