@@ -89,16 +89,34 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    
     static NSString * cellID = @"ContactCell";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     // 获取对应好友
 //    XMPPUserCoreDataStorageObject * friend = self.friends[indexPath.row];
     XMPPUserCoreDataStorageObject * friend = _resultsController.fetchedObjects[indexPath.row];
+    switch ([friend.sectionNum intValue]) {
+        case 0:
+            cell.detailTextLabel.text = @"在线";
+            break;
+        case 1:
+            cell.detailTextLabel.text = @"离开";
+            break;
+        case 2:
+            cell.detailTextLabel.text = @"离线";
+            break;
+            
+        default:
+            break;
+    }
+    
     cell.textLabel.text = friend.jidStr;
+    
     
     return cell;
 }
