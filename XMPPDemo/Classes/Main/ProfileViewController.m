@@ -9,7 +9,7 @@
 #import "ProfileViewController.h"
 #import "XMPPvCardTemp.h"
 #import "EditCardProfileViewController.h"
-@interface ProfileViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ProfileViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,EditCardProfileViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *headerView; // 头像
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel; // 昵称
 @property (weak, nonatomic) IBOutlet UILabel *weChatNumLabel; // 微信号
@@ -94,6 +94,7 @@
     if ([destVc isKindOfClass:[EditCardProfileViewController class]]) {
         EditCardProfileViewController * editVc = destVc;
         editVc.cell = sender;
+        editVc.delegate = self;
     }
 }
 
@@ -128,8 +129,15 @@
     // 获取图片 设置图片
     UIImage * image = info[UIImagePickerControllerEditedImage];
     self.headerView.image = image;
+
+  
     // 隐藏当前模态窗口
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // 更新服务器
+   
+    [self editProfileViewControllerDidSave];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,6 +145,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)editProfileViewControllerDidSave {
+    // 保存
+    // 获取当前的电子名片信息
+    XMPPvCardTemp * myVCard = [XMPPTool defaultTool].vCard.myvCardTemp;
+    
+    myVCard.photo = UIImagePNGRepresentation(self.headerView.image);
+    // 昵称
+    myVCard.nickname = self.nickNameLabel.text;
+    // 公司
+    myVCard.orgName = self.orgNameLabel.text;
+    
+    // 部门
+    if (self.orgUnitLabel.text.length > 0) {
+        myVCard.orgUnits = @[self.orgUnitLabel.text];
+    }
+    // 职位
+    myVCard.title = self.titleLabel.text;
+    // 电话
+    myVCard.note = self.telLabel.text;
+    // 邮件
+    myVCard.mailer = self.emailLabel.text;
+    
+    // 更新 这个方法会内部会实现数据上传到服务器,无需程序自己操作
+    [[XMPPTool defaultTool].vCard updateMyvCardTemp:myVCard];
 
+}
 
 @end

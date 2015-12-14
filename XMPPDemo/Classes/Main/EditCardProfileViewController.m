@@ -7,7 +7,7 @@
 //
 
 #import "EditCardProfileViewController.h"
-
+#import "XMPPvCardTemp.h"
 @interface EditCardProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
@@ -37,6 +37,14 @@
     [self.cell layoutSubviews];
     // 2 当前的控制器消失
     [self.navigationController popViewControllerAnimated:YES];
+    
+//    XMPPvCardTemp * myVCard = [XMPPTool defaultTool].vCard.myvCardTemp;
+//    myVCard.nickname = self.textField.text;
+//
+    if ([self.delegate respondsToSelector:@selector(editProfileViewControllerDidSave)]) {
+//       通知代理 点击了保存按钮
+        [self.delegate editProfileViewControllerDidSave];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

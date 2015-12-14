@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EditCardProfileViewControllerDelegate <NSObject>
+
+- (void)editProfileViewControllerDidSave;
+
+@end
+
+
 @interface EditCardProfileViewController : UITableViewController
+@property (nonatomic,weak) id<EditCardProfileViewControllerDelegate> delegate;
 @property (nonatomic,strong) UITableViewCell * cell;
 @end
