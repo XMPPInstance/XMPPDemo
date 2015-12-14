@@ -7,7 +7,7 @@
 //
 
 #import "ContactsViewController.h"
-
+#import "XMPPUserCoreDataStorageObject.h"
 @interface ContactsViewController ()
 @property (nonatomic,strong) NSArray * friends;
 @end
@@ -46,7 +46,27 @@
     self.friends = [context executeFetchRequest:request error:nil];
     NSLog(@"%@",self.friends);
 }
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.friends.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * cellID = @"ContactCell";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    // 获取对应好友
+    XMPPUserCoreDataStorageObject * friend = self.friends[indexPath.row];
+    cell.textLabel.text = friend.jidStr;
+    
+    return cell;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
