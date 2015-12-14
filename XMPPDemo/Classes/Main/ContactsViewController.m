@@ -121,6 +121,15 @@
     return cell;
 }
 
+// 实现这个方法 cell往左划 就会有个delete
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"删除好友");
+        XMPPUserCoreDataStorageObject * friend = _resultsController.fetchedObjects[indexPath.row];
+        [[XMPPTool defaultTool].roster removeUser:friend.jid];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
