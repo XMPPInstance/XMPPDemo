@@ -8,7 +8,9 @@
 
 #import "ContactsViewController.h"
 #import "XMPPUserCoreDataStorageObject.h"
-@interface ContactsViewController ()
+@interface ContactsViewController () <NSFetchedResultsControllerDelegate>{
+    NSFetchedResultsController * _resultsController;
+}
 @property (nonatomic,strong) NSArray * friends;
 @end
 
@@ -24,7 +26,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // 从数据库里加载好友列表显示
-    [self loadFriends];
+    [self loadFriends2];
     
 }
 
@@ -46,12 +48,44 @@
     self.friends = [context executeFetchRequest:request error:nil];
     NSLog(@"%@",self.friends);
 }
+
+- (void)loadFriends2 {
+    // 使用CoreData获取数据
+    // 1 上下文[关联到数据库XMPPDemo.sqlite]
+    NSManagedObjectContext * context = [XMPPTool defaultTool].rosterStorage.mainThreadManagedObjectContext;
+    // 2 FetchReques[查哪张表]
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
+    // 3 设置过滤和排序
+    // 过滤当前登录用户的好友
+    NSString * jid = [UserInfo defaultUserInfo].jid;
+    NSPredicate * pre = [NSPredicate predicateWithFormat:@"streamBareJidStr = %@",jid];
+    request.predicate = pre;
+    // 排序
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
+    request.sortDescriptors = @[sort];
+    // 4 执行请求获取数据
+    _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    _resultsController.delegate = self;
+    NSError * error = nil;
+    [_resultsController performFetch:&error];
+    if (error) {
+        WCLog(@"%@",error);
+    }
+}
+
+#pragma mark 当数据的内容发生改变,会调用这个方法
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    WCLog(@"数据发生改变");
+    [self.tableView reloadData];
+}
+
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //    return 1;
 //}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.friends.count;
+//    return self.friends.count;
+    return _resultsController.fetchedObjects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +96,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     // 获取对应好友
-    XMPPUserCoreDataStorageObject * friend = self.friends[indexPath.row];
+//    XMPPUserCoreDataStorageObject * friend = self.friends[indexPath.row];
+    XMPPUserCoreDataStorageObject * friend = _resultsController.fetchedObjects[indexPath.row];
     cell.textLabel.text = friend.jidStr;
     
     return cell;
