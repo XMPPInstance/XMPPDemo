@@ -11,6 +11,7 @@
 		FC0F875C1C1C5F84009048C7 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0F875B1C1C5F84009048C7 /* libresolv.tbd */; };
 		FC59C0731C1D5DE700D9350F /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0721C1D5DE700D9350F /* XMPPTool.m */; };
 		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
+		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
 		FCF94D2F1C151D30004D86E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D2E1C151D30004D86E8 /* main.m */; };
 		FCF94D321C151D30004D86E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D311C151D30004D86E8 /* AppDelegate.m */; };
 		FCF94D351C151D30004D86E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D341C151D30004D86E8 /* ViewController.m */; };
@@ -182,6 +183,8 @@
 		FC59C0721C1D5DE700D9350F /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
 		FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		FC59C0B91C1E594100D9350F /* EditCardProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCardProfileViewController.h; sourceTree = "<group>"; };
+		FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCardProfileViewController.m; sourceTree = "<group>"; };
 		FCF94D291C151D30004D86E8 /* XMPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF94D2D1C151D30004D86E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCF94D2E1C151D30004D86E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1471,6 +1474,8 @@
 				FCF94F8F1C1908C0004D86E8 /* MeViewController.m */,
 				FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */,
 				FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */,
+				FC59C0B91C1E594100D9350F /* EditCardProfileViewController.h */,
+				FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1695,6 +1700,7 @@
 				FCF94F571C16CF02004D86E8 /* XMPPMessage+XEP_0224.m in Sources */,
 				FCF94F071C16CF02004D86E8 /* XMPPReconnect.m in Sources */,
 				FCF94E161C16CEBF004D86E8 /* GCDMulticastDelegate.m in Sources */,
+				FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */,
 				FCF94F201C16CF02004D86E8 /* XMPPRoomMemoryStorage.m in Sources */,
 				FCF94F581C16CF02004D86E8 /* NSXMLElement+XEP_0297.m in Sources */,
 				FCF94F4A1C16CF02004D86E8 /* XMPPvCardAvatarModule.m in Sources */,

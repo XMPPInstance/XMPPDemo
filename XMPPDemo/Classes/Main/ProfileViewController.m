@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "XMPPvCardTemp.h"
+#import "EditCardProfileViewController.h"
 @interface ProfileViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *headerView; // 头像
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel; // 昵称
@@ -81,8 +82,19 @@
         
     } else {
          WCLog(@"跳到下一个控制器");
+        [self performSegueWithIdentifier:@"EditCardSegue" sender:cell];
     }
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // 获取编辑个人信息的控制器
+
+    id destVc = segue.destinationViewController;
+    if ([destVc isKindOfClass:[EditCardProfileViewController class]]) {
+        EditCardProfileViewController * editVc = destVc;
+        editVc.cell = sender;
+    }
 }
 
 #pragma mark actionSheet的delegate
@@ -108,6 +120,8 @@
     
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     WCLog(@"%@",info);
