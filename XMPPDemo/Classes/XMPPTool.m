@@ -16,6 +16,10 @@
     XMPPvCardCoreDataStorage * _vCardStorage; // 电子名片的存储
     
     XMPPvCardAvatarModule * _avatar; // 电子名片的头像
+    
+    XMPPRoster * _roster; // 花名册模块
+   
+    
 }
 // 1 初始化XMPPStream
 - (void)setUpXMPPStream;
@@ -52,6 +56,11 @@
     _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
     [_avatar activate:_xmppStream];
     
+    // 添加花名册模块
+    _rosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+    _roster = [[XMPPRoster alloc] initWithRosterStorage:_rosterStorage];
+    [_roster activate:_xmppStream];
+    
     
     // 设置代理
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -64,6 +73,7 @@
     [_xmppStream removeDelegate:self];
     // 停止模块
     [_reconnect deactivate];
+    [_roster deactivate];
     [_vCard deactivate];
     [_avatar deactivate];
     // 断开连接
@@ -71,6 +81,8 @@
     
     // 清空资源
     _reconnect = nil;
+    _roster = nil;
+    _rosterStorage = nil;
     _vCard = nil;
     _vCardStorage = nil;
     _avatar = nil;

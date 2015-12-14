@@ -10,6 +10,7 @@
 #define UserKey @"user"
 #define PwdKey @"pwd"
 #define LoginStatus @"loginStatus"
+static NSString * domain = @"swkits.com";
 @implementation UserInfo
 + (UserInfo *)defaultUserInfo {
     static UserInfo * userInfo = nil;
@@ -32,6 +33,10 @@
     self.user = [userDefaults objectForKey:UserKey];
     self.loginStatus = [userDefaults boolForKey:LoginStatus];
     self.pwd = [userDefaults objectForKey:PwdKey];
+}
+
+- (NSString *)jid {
+    return [NSString stringWithFormat:@"%@@%@",self.user,domain];
 }
 
 @end

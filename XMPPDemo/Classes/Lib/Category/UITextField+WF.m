@@ -1,9 +1,9 @@
 //
 //  UITextField+WF.m
-//  WeiXin
+//  XMPPDemo
 //
-//  Created by Yong Feng Guo on 14-11-21.
-//  Copyright (c) 2014年 Fung. All rights reserved.
+//  Created by Wang Qitai on 15-12-11.
+//  Copyright (c) 2015年 WangQitai. All rights reserved.
 //
 
 #import "UITextField+WF.h"

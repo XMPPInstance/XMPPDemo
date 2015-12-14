@@ -13,6 +13,8 @@
 @property (nonatomic,copy) NSString * pwd;
 @property (nonatomic,copy) NSString * registerUser;// 注册的用户名
 @property (nonatomic,copy) NSString * registerPwd;// 注册的密码
+
+@property (nonatomic,copy) NSString * jid;
 /**
  YES 代表登陆过 /NO 代表 注销
  */

@@ -29,6 +29,9 @@
 //自动连接模块
 #import "XMPPReconnect.h"
 
+#import "XMPPRoster.h"
+#import "XMPPRosterCoreDataStorage.h"
+
 // List the modules you're using here:
 // (the following may not be a complete list)
 
@@ -38,9 +41,9 @@
 //
 
 //
-//#import "XMPPRoster.h"
+
 //#import "XMPPRosterMemoryStorage.h"
-//#import "XMPPRosterCoreDataStorage.h"
+
 //
 //#import "XMPPJabberRPCModule.h"
 //#import "XMPPIQ+JabberRPC.h"
