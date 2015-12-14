@@ -113,12 +113,71 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="通讯录" id="cUj-vB-mjb"/>
+                    <navigationItem key="navigationItem" title="通讯录" id="cUj-vB-mjb">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bmI-x6-NQJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2KH-5Z-ytc">
+                                <rect key="frame" x="540" y="7" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="contacts_add_friend"/>
+                                <connections>
+                                    <segue destination="jSM-vP-XTw" kind="show" id="rE0-MF-Jii"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzm-zq-Dv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="152"/>
+            <point key="canvasLocation" x="791" y="119"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="cAr-1E-X51">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="jSM-vP-XTw" customClass="AddContactViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Hu1-qJ-VjB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="oM9-su-ASz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ap6-9Q-8Rg">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ap6-9Q-8Rg" id="yeI-67-Zma">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjD-eF-PFq">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="jSM-vP-XTw" id="hI8-JF-27A"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hjD-eF-PFq" firstAttribute="leading" secondItem="yeI-67-Zma" secondAttribute="leadingMargin" id="Rfh-QI-xVa"/>
+                                                <constraint firstItem="hjD-eF-PFq" firstAttribute="top" secondItem="yeI-67-Zma" secondAttribute="topMargin" id="pLi-tf-Rj0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hjD-eF-PFq" secondAttribute="trailing" id="rVL-C3-gsp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hjD-eF-PFq" secondAttribute="bottom" id="wpi-NN-jeg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="jSM-vP-XTw" id="N4i-6A-CHc"/>
+                            <outlet property="delegate" destination="jSM-vP-XTw" id="qvU-Bu-MWe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z3n-1R-dex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="114"/>
         </scene>
         <!--发现-->
         <scene sceneID="xg8-fg-VVu">
@@ -558,6 +617,7 @@
     <resources>
         <image name="DefaultHead" width="46" height="46"/>
         <image name="DefaultProfileHead_qq" width="68" height="68"/>
+        <image name="contacts_add_friend" width="28" height="30"/>
         <image name="tabbar_contacts" width="27" height="23"/>
         <image name="tabbar_contactsHL" width="27" height="23"/>
         <image name="tabbar_discover" width="23" height="23"/>

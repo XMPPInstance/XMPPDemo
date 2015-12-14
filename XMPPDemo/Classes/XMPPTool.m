@@ -9,16 +9,13 @@
 #import "XMPPTool.h"
 
 @interface XMPPTool ()<XMPPStreamDelegate> {
-    XMPPStream * _xmppStream;
+    
     XMPPResultBlock _resultBlock;
     XMPPReconnect * _reconnect;
     // 电子名片
     XMPPvCardCoreDataStorage * _vCardStorage; // 电子名片的存储
     
     XMPPvCardAvatarModule * _avatar; // 电子名片的头像
-    
-    XMPPRoster * _roster; // 花名册模块
-   
     
 }
 // 1 初始化XMPPStream

@@ -10,7 +10,7 @@
 #define UserKey @"user"
 #define PwdKey @"pwd"
 #define LoginStatus @"loginStatus"
-static NSString * domain = @"swkits.com";
+
 @implementation UserInfo
 + (UserInfo *)defaultUserInfo {
     static UserInfo * userInfo = nil;

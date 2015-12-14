@@ -13,6 +13,7 @@
 		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
 		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
 		FC59C0BE1C1E719900D9350F /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BD1C1E719900D9350F /* ContactsViewController.m */; };
+		FC59C0C11C1EA94A00D9350F /* AddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */; };
 		FCF94D2F1C151D30004D86E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D2E1C151D30004D86E8 /* main.m */; };
 		FCF94D321C151D30004D86E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D311C151D30004D86E8 /* AppDelegate.m */; };
 		FCF94D351C151D30004D86E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D341C151D30004D86E8 /* ViewController.m */; };
@@ -188,6 +189,8 @@
 		FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCardProfileViewController.m; sourceTree = "<group>"; };
 		FC59C0BC1C1E719900D9350F /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		FC59C0BD1C1E719900D9350F /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		FC59C0BF1C1EA94A00D9350F /* AddContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactViewController.h; sourceTree = "<group>"; };
+		FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactViewController.m; sourceTree = "<group>"; };
 		FCF94D291C151D30004D86E8 /* XMPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF94D2D1C151D30004D86E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCF94D2E1C151D30004D86E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1481,6 +1484,8 @@
 				FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */,
 				FC59C0BC1C1E719900D9350F /* ContactsViewController.h */,
 				FC59C0BD1C1E719900D9350F /* ContactsViewController.m */,
+				FC59C0BF1C1EA94A00D9350F /* AddContactViewController.h */,
+				FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1740,6 +1745,7 @@
 				FCF94F371C16CF02004D86E8 /* TURNSocket.m in Sources */,
 				FCF94F771C17D4E2004D86E8 /* UIImage+WF.m in Sources */,
 				FCF94F101C16CF02004D86E8 /* XMPPRoster.m in Sources */,
+				FC59C0C11C1EA94A00D9350F /* AddContactViewController.m in Sources */,
 				FCF94F501C16CF02004D86E8 /* XMPPAutoPing.m in Sources */,
 				FCF94F411C16CF02004D86E8 /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				FCF94DB71C16CCD9004D86E8 /* DDLog.m in Sources */,

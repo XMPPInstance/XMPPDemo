@@ -21,7 +21,10 @@ typedef void (^XMPPResultBlock)(XMPPResultType type); // XMPP 请求结果的Blo
 + (XMPPTool *)defaultTool;
 // 注册标识 YES 代表注册 / NO 代表登录
 @property (nonatomic,assign,getter=isRegisterOperation) BOOL registerOperation; // 注册操作
+@property (nonatomic,strong) XMPPStream * xmppStream;
 @property (nonatomic,strong)  XMPPRosterCoreDataStorage * rosterStorage; // 花名册数据存储
+
+@property (nonatomic,strong)  XMPPRoster * roster; // 花名册模块
 @property (nonatomic,strong) XMPPvCardTempModule * vCard; // 电子名片
 // 登录
 - (void)xmppUserLogin:(XMPPResultBlock)resultBlock;

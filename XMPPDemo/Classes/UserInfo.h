@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+static NSString * domain = @"swkits.com";
 @interface UserInfo : NSObject
 @property (nonatomic,copy) NSString * user;
 @property (nonatomic,copy) NSString * pwd;
