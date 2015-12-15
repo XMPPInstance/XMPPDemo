@@ -61,9 +61,12 @@
     // 邮件
 #warning myVCard.emailAddresses 这个get方法,没有解析
     // 用mailer 字段充当 email
-    self.emailLabel.text = myVCard.mailer;
+//    self.emailLabel.text = myVCard.mailer;
     // 不管有多少个邮件 只取第一个
-   
+    if (myVCard.emailAddresses.count > 0) {
+        self.emailLabel.text = myVCard.emailAddresses[0];
+
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,9 +170,11 @@
     // 电话
     myVCard.note = self.telLabel.text;
     // 邮件
-    myVCard.mailer = self.emailLabel.text;
+//    myVCard.mailer = self.emailLabel.text;
     
-   
+    if (self.emailLabel.text.length > 0) {
+        myVCard.emailAddresses = @[self.emailLabel.text];
+    }
     
     
     // 更新 这个方法会内部会实现数据上传到服务器,无需程序自己操作

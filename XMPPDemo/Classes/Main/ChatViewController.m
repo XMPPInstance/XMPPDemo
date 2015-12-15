@@ -178,11 +178,7 @@
     
     NSString * chatType = [msg.message attributeStringValueForName:@"bodyType"];
     
-    if ([chatType isEqualToString:@"image"]) {
-        // 下载图片
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:msg.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead_qq"]];
-        cell.textLabel.text = nil;
-    } else if ([chatType isEqualToString:@"text"]) {
+  if ([chatType isEqualToString:@"text"]) {
         if ([msg.outgoing boolValue]) { // 自己发的
             // 显示消息
             cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
@@ -191,7 +187,11 @@
             
         }
         cell.imageView.image = nil;
-    }
+  } else if ([chatType isEqualToString:@"image"]) {
+      // 下载图片
+      [cell.imageView sd_setImageWithURL:[NSURL URLWithString:msg.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead_qq"]];
+      cell.textLabel.text = nil;
+  }
     return cell;
 }
 
