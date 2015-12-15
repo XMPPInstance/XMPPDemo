@@ -14,6 +14,9 @@
 		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
 		FC59C0BE1C1E719900D9350F /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BD1C1E719900D9350F /* ContactsViewController.m */; };
 		FC59C0C11C1EA94A00D9350F /* AddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */; };
+		FC59C0C41C1EB92100D9350F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0C31C1EB92100D9350F /* ChatViewController.m */; };
+		FC59C0C81C1EB9FF00D9350F /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0C71C1EB9FF00D9350F /* InputView.m */; };
+		FC59C0CA1C1EBA2A00D9350F /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC59C0C91C1EBA2900D9350F /* InputView.xib */; };
 		FCF94D2F1C151D30004D86E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D2E1C151D30004D86E8 /* main.m */; };
 		FCF94D321C151D30004D86E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D311C151D30004D86E8 /* AppDelegate.m */; };
 		FCF94D351C151D30004D86E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF94D341C151D30004D86E8 /* ViewController.m */; };
@@ -191,6 +194,11 @@
 		FC59C0BD1C1E719900D9350F /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		FC59C0BF1C1EA94A00D9350F /* AddContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactViewController.h; sourceTree = "<group>"; };
 		FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactViewController.m; sourceTree = "<group>"; };
+		FC59C0C21C1EB92100D9350F /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		FC59C0C31C1EB92100D9350F /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		FC59C0C61C1EB9FF00D9350F /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		FC59C0C71C1EB9FF00D9350F /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
+		FC59C0C91C1EBA2900D9350F /* InputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
 		FCF94D291C151D30004D86E8 /* XMPPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF94D2D1C151D30004D86E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCF94D2E1C151D30004D86E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -526,6 +534,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC59C0C51C1EB9E200D9350F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC59C0C61C1EB9FF00D9350F /* InputView.h */,
+				FC59C0C71C1EB9FF00D9350F /* InputView.m */,
+				FC59C0C91C1EBA2900D9350F /* InputView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		FCF94D201C151D30004D86E8 = {
 			isa = PBXGroup;
 			children = (
@@ -1410,6 +1428,7 @@
 		FCF94F601C17C634004D86E8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				FC59C0C51C1EB9E200D9350F /* View */,
 				FCF94F8D1C19089A004D86E8 /* Controllers */,
 				FCF94D361C151D30004D86E8 /* Main.storyboard */,
 			);
@@ -1486,6 +1505,8 @@
 				FC59C0BD1C1E719900D9350F /* ContactsViewController.m */,
 				FC59C0BF1C1EA94A00D9350F /* AddContactViewController.h */,
 				FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */,
+				FC59C0C21C1EB92100D9350F /* ChatViewController.h */,
+				FC59C0C31C1EB92100D9350F /* ChatViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1597,6 +1618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF94DC01C16CCDA004D86E8 /* build-libidn.sh in Resources */,
+				FC59C0CA1C1EBA2A00D9350F /* InputView.xib in Resources */,
 				FCF94D381C151D30004D86E8 /* Main.storyboard in Resources */,
 				FCF94F621C17C67B004D86E8 /* Login.storyboard in Resources */,
 				FCF94D3D1C151D30004D86E8 /* LaunchScreen.xib in Resources */,
@@ -1647,6 +1669,7 @@
 				FCF94F561C16CF02004D86E8 /* XMPPAttentionModule.m in Sources */,
 				FCF94F471C16CF02004D86E8 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				FCF94F3A1C16CF02004D86E8 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
+				FC59C0C81C1EB9FF00D9350F /* InputView.m in Sources */,
 				FCF94E181C16CEBF004D86E8 /* XMPPIDTracker.m in Sources */,
 				FCF94F4E1C16CF02004D86E8 /* XMPPMessageDeliveryReceipts.m in Sources */,
 				FCF94F3F1C16CF02004D86E8 /* NSString+XEP_0106.m in Sources */,
@@ -1744,6 +1767,7 @@
 				FCF94F8C1C18202F004D86E8 /* WCNavigationController.m in Sources */,
 				FCF94F371C16CF02004D86E8 /* TURNSocket.m in Sources */,
 				FCF94F771C17D4E2004D86E8 /* UIImage+WF.m in Sources */,
+				FC59C0C41C1EB92100D9350F /* ChatViewController.m in Sources */,
 				FCF94F101C16CF02004D86E8 /* XMPPRoster.m in Sources */,
 				FC59C0C11C1EA94A00D9350F /* AddContactViewController.m in Sources */,
 				FCF94F501C16CF02004D86E8 /* XMPPAutoPing.m in Sources */,

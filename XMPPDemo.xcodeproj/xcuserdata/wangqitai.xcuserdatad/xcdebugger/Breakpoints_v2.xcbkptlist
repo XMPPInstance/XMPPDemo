@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XMPPDemo/Classes/XMPPTool.m"
-            timestampString = "471772482.103256"
+            timestampString = "471774665.590973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-setUpXMPPStream"
             landmarkType = "5">
          </BreakpointContent>
