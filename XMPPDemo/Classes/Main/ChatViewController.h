@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "XMPPJID.h"
 @interface ChatViewController : UIViewController
-
+@property (nonatomic,strong) XMPPJID * friendJid;
 @end

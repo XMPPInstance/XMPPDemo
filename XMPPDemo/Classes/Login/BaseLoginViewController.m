@@ -103,8 +103,10 @@
     [self dismissViewControllerAnimated:NO completion:nil];
     // 登录成功 来到主界面
     // 此方法是在子线程中调用,应该在主线程中刷新UI
-    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = storyBoard.instantiateInitialViewController;
+//    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    self.view.window.rootViewController = storyBoard.instantiateInitialViewController;
+    [UIStoryboard showInitialVCWithName:@"Main"];
+
 }
 
 - (void)didReceiveMemoryWarning {

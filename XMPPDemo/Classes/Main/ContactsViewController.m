@@ -8,6 +8,7 @@
 
 #import "ContactsViewController.h"
 #import "XMPPUserCoreDataStorageObject.h"
+#import "ChatViewController.h"
 @interface ContactsViewController () <NSFetchedResultsControllerDelegate>{
     NSFetchedResultsController * _resultsController;
 }
@@ -131,8 +132,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    XMPPUserCoreDataStorageObject * friend = _resultsController.fetchedObjects[indexPath.row];
     // 选中表格进入聊天界面
-    [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
+    [self performSegueWithIdentifier:@"ChatSegue" sender:friend.jid];
+    
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id destVc = segue.destinationViewController;
+    if ([destVc isKindOfClass:[ChatViewController class]]) {
+        ChatViewController * chatVc = destVc;
+        chatVc.friendJid = sender;
+    }
     
 }
 

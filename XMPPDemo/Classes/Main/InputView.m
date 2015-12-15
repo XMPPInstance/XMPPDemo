@@ -12,6 +12,8 @@
 + (instancetype)inputView {
     return [[[NSBundle mainBundle] loadNibNamed:@"InputView" owner:nil options:nil] lastObject];
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
