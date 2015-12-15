@@ -11,7 +11,8 @@
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate> {
     NSFetchedResultsController * _fetchedResultController;
 }
-@property (nonatomic,strong) NSLayoutConstraint * inputViewContraint; // inputView地步约束
+@property (nonatomic,strong) NSLayoutConstraint * inputViewBottomContraint;
+@property (nonatomic,strong) NSLayoutConstraint * inputViewHeightContraint;// inputView高度约束
 @property (nonatomic,weak) InputView * inputView;
 @property (nonatomic,weak) UITableView * tableView;
 @end
@@ -35,13 +36,13 @@
     // 获取键盘高度
     CGRect kbEndFrm = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat kbHeight = kbEndFrm.size.height;
-    self.inputViewContraint.constant = kbHeight;
+    self.inputViewBottomContraint.constant = kbHeight;
     // 表格滚动到底部
     [self scrollToTableBottom];
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
-    self.inputViewContraint.constant = 0;
+    self.inputViewBottomContraint.constant = 0;
 }
 
 //- (void)kbFrmWillChange:(NSNotification *)noti {
@@ -56,7 +57,7 @@
 //    // 获取键盘结束的y值
 //    CGFloat kbEndY = kbEndFrm.origin.y;
 //    
-//    self.inputViewContraint.constant = windowH - kbEndY;
+//    self.inputViewBottomContraint.constant = windowH - kbEndY;
 //}
 
 - (void)setUpView {
@@ -98,7 +99,9 @@
     // 垂直方向的约束
     
     NSArray * vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-64-[tableView]-0-[inputView(50)]-0-|" options:0 metrics:nil views:views];
-    self.inputViewContraint = [vConstraints lastObject];
+    // 添加inputView的高度的越是
+    self.inputViewHeightContraint = vConstraints[2];
+    self.inputViewBottomContraint = [vConstraints lastObject];
     [self.view addConstraints:vConstraints];
     
 }
@@ -183,12 +186,23 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
+    // 获取contentSize
+    CGFloat contentHeight = textView.contentSize.height;
+    NSLog(@"textView的content的高度是 %f",contentHeight);
+    // 大于33 超过一行的高度 / 小于68 高度是三行之内的
+    if (contentHeight > 33 && contentHeight < 68) {
+        self.inputViewHeightContraint.constant = contentHeight + 18;
+    }
+    
+    
     NSLog(@"%@",textView.text);
     NSString * text = textView.text;
     if ([text rangeOfString:@"\n"].length != 0) {
         NSLog(@"发送数据 %@",text);
         [self sendMsgWithText:text];
         textView.text = nil;
+        // 发送完消息,把inputView的高度改回来
+        self.inputViewHeightContraint.constant = 50;
     } else {
         NSLog(@"%@",textView.text);
     }
