@@ -36,6 +36,8 @@
     CGRect kbEndFrm = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat kbHeight = kbEndFrm.size.height;
     self.inputViewContraint.constant = kbHeight;
+    // 表格滚动到底部
+    [self scrollToTableBottom];
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
@@ -137,7 +139,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touchBegan");
-    [_inputView.textView endEditing:YES];
+  
 }
 
 
@@ -154,13 +156,20 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     
     // 获取聊天消息对象
     XMPPMessageArchiving_Message_CoreDataObject * msg = _fetchedResultController.fetchedObjects[indexPath.row];
-    // 显示消息
-    cell.textLabel.text = msg.body;
+    if ([msg.outgoing boolValue]) { // 自己发的
+        // 显示消息
+        cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
+    } else { // 别人发的
+        cell.textLabel.text = [NSString stringWithFormat:@"Other: %@",msg.body];
+        
+    }
+    
+    
     
     
     return cell;
@@ -170,8 +179,42 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // 刷新数据
     [self.tableView reloadData];
+    [self scrollToTableBottom];
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    NSLog(@"%@",textView.text);
+    NSString * text = textView.text;
+    if ([text rangeOfString:@"\n"].length != 0) {
+        NSLog(@"发送数据 %@",text);
+        [self sendMsgWithText:text];
+        textView.text = nil;
+    } else {
+        NSLog(@"%@",textView.text);
+    }
+    
+    
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//      [_inputView.textView endEditing:YES];
+//}
+#pragma mark 发送聊天消息
+- (void)sendMsgWithText:(NSString *)text {
+    XMPPMessage * msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
+    // 设置内容
+    [msg addBody:text];
+    NSLog(@"%@",msg);
+    [[XMPPTool defaultTool].xmppStream sendElement:msg];
+}
+
+#pragma mark 滚动到底部
+- (void)scrollToTableBottom {
+    NSInteger lastRow = _fetchedResultController.fetchedObjects.count - 1;
+    NSIndexPath * lastPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    [self.tableView scrollToRowAtIndexPath:lastPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+}
 
 /*
 #pragma mark - Navigation
