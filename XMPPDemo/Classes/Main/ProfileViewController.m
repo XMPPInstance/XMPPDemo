@@ -62,6 +62,8 @@
 #warning myVCard.emailAddresses 这个get方法,没有解析
     // 用mailer 字段充当 email
     self.emailLabel.text = myVCard.mailer;
+    // 不管有多少个邮件 只取第一个
+   
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -166,6 +168,9 @@
     myVCard.note = self.telLabel.text;
     // 邮件
     myVCard.mailer = self.emailLabel.text;
+    
+   
+    
     
     // 更新 这个方法会内部会实现数据上传到服务器,无需程序自己操作
     [[XMPPTool defaultTool].vCard updateMyvCardTemp:myVCard];

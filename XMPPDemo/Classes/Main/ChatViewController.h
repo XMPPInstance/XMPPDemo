@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XMPPJID.h"
+#import "HttpTool.h"
 @interface ChatViewController : UIViewController
 @property (nonatomic,strong) XMPPJID * friendJid;
+@property (nonatomic,strong) HttpTool * httpTool;
 @end

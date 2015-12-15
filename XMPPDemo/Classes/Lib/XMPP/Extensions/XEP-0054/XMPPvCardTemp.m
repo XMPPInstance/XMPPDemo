@@ -321,10 +321,15 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 - (void)clearTelecomsAddresses { }
 
 
-- (NSArray *)emailAddresses { return nil; }
+- (NSArray *)emailAddresses {
+    return  nil;
+}
 - (void)addEmailAddress:(XMPPvCardTempEmail *)email { }
 - (void)removeEmailAddress:(XMPPvCardTempEmail *)email { }
-- (void)setEmailAddresses:(NSArray *)emails { }
+- (void)setEmailAddresses:(NSArray *)emails {
+    return nil;
+    
+}
 - (void)clearEmailAddresses { }
 
 

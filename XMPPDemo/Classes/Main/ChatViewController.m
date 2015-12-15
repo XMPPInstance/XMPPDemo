@@ -8,7 +8,8 @@
 
 #import "ChatViewController.h"
 #import "InputView.h"
-@interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate> {
+#import "UIImageView+WebCache.h"
+@interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
     NSFetchedResultsController * _fetchedResultController;
 }
 @property (nonatomic,strong) NSLayoutConstraint * inputViewBottomContraint;
@@ -18,6 +19,13 @@
 @end
 
 @implementation ChatViewController
+
+- (HttpTool *)httpTool {
+    if (_httpTool == nil) {
+        _httpTool = [[HttpTool alloc] init];
+    }
+    return _httpTool;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,6 +85,7 @@
     inputView.translatesAutoresizingMaskIntoConstraints = NO;
     inputView.textView.delegate = self;
     _inputView = inputView;
+    [_inputView.addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:inputView];
     
     // 自动布局
@@ -105,6 +114,8 @@
     [self.view addConstraints:vConstraints];
     
 }
+
+
 
 - (void)loadMsgs {
     // 上下文
@@ -164,17 +175,23 @@
     
     // 获取聊天消息对象
     XMPPMessageArchiving_Message_CoreDataObject * msg = _fetchedResultController.fetchedObjects[indexPath.row];
-    if ([msg.outgoing boolValue]) { // 自己发的
-        // 显示消息
-        cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
-    } else { // 别人发的
-        cell.textLabel.text = [NSString stringWithFormat:@"Other: %@",msg.body];
-        
+    
+    NSString * chatType = [msg.message attributeStringValueForName:@"bodyType"];
+    
+    if ([chatType isEqualToString:@"image"]) {
+        // 下载图片
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:msg.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead_qq"]];
+        cell.textLabel.text = nil;
+    } else if ([chatType isEqualToString:@"text"]) {
+        if ([msg.outgoing boolValue]) { // 自己发的
+            // 显示消息
+            cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
+        } else { // 别人发的
+            cell.textLabel.text = [NSString stringWithFormat:@"Other: %@",msg.body];
+            
+        }
+        cell.imageView.image = nil;
     }
-    
-    
-    
-    
     return cell;
 }
 
@@ -199,7 +216,7 @@
     NSString * text = textView.text;
     if ([text rangeOfString:@"\n"].length != 0) {
         NSLog(@"发送数据 %@",text);
-        [self sendMsgWithText:text];
+        [self sendMsgWithText:text bodyType:@"text"];
         textView.text = nil;
         // 发送完消息,把inputView的高度改回来
         self.inputViewHeightContraint.constant = 50;
@@ -214,10 +231,11 @@
 //      [_inputView.textView endEditing:YES];
 //}
 #pragma mark 发送聊天消息
-- (void)sendMsgWithText:(NSString *)text {
+- (void)sendMsgWithText:(NSString *)text bodyType:(NSString *)bodyType{
     XMPPMessage * msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
     // 设置内容
     [msg addBody:text];
+    [msg addAttributeWithName:@"bodyType" stringValue:bodyType];
     NSLog(@"%@",msg);
     [[XMPPTool defaultTool].xmppStream sendElement:msg];
 }
@@ -229,6 +247,38 @@
     [self.tableView scrollToRowAtIndexPath:lastPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
 }
+
+
+
+- (void)addBtnClick {
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"%@",info);
+    // 获取图片
+    UIImage * image = info[UIImagePickerControllerOriginalImage];
+    
+    // 把图片发送到文件服务器
+    
+    NSString * uploadUrl = [@"http://127.0.0.1/share/xmppfileupload/" stringByAppendingString:@"0006.jpg"];
+    
+    // 图片发送成功,把图片的URL上传Openfire的服务器
+    [self.httpTool uploadData:UIImageJPEGRepresentation(image, 0.75) url:[NSURL URLWithString:uploadUrl] progressBlock:nil completion:^(NSError *error) {
+        if (!error) {
+            NSLog(@"上传成功");
+            [self sendMsgWithText:uploadUrl bodyType:@"image"];
+        }
+    }];
+    
+    
+}
+
+
 
 /*
 #pragma mark - Navigation
