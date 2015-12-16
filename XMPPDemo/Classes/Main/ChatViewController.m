@@ -34,9 +34,9 @@
            NSString * type;
             
             if ([msg.outgoing isEqualToNumber:@1]) {
-                type = @"0";
-            } else {
                 type = @"1";
+            } else {
+                type = @"0";
             }
 
             NSDictionary * dic = @{@"text":msg.body,@"type":type,@"time":msg.timestamp};
@@ -284,7 +284,8 @@
     NSString * text = textView.text;
     if ([text rangeOfString:@"\n"].length != 0) {
         NSLog(@"发送数据 %@",text);
-        [self sendMsgWithText:text bodyType:@"text"];
+        NSRange range = [text rangeOfString:@"\n"];
+        [self sendMsgWithText:[text substringToIndex:range.location] bodyType:@"text"];
         textView.text = nil;
         // 发送完消息,把inputView的高度改回来
         self.inputViewHeightContraint.constant = 50;
