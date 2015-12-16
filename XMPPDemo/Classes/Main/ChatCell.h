@@ -11,6 +11,7 @@
 @class WQTMessageFrame;
 @interface ChatCell : UITableViewCell
 @property (nonatomic,strong) WQTMessageFrame * mFrame;
+@property (nonatomic,strong) XMPPJID * friendJID;
 + (instancetype)chatCellWithTableView:(UITableView *)tableView;
 
 @end

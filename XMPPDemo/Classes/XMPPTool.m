@@ -15,7 +15,7 @@
     // 电子名片
     XMPPvCardCoreDataStorage * _vCardStorage; // 电子名片的存储
     
-    XMPPvCardAvatarModule * _avatar; // 电子名片的头像
+    
     
     XMPPMessageArchiving * _msgArchiving;// 聊天模块
     

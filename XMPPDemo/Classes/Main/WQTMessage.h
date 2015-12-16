@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 typedef enum
 {
-    MESSAGETYPEOTHER,
     MESSAGETYPEME,
+    MESSAGETYPEOTHER,
+    
 }MESSAGETYPE;
 @interface WQTMessage : NSObject
 /**

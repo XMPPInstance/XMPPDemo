@@ -15,10 +15,19 @@
 @property (nonatomic,weak) UIImageView * iconView;
 @property (nonatomic,weak) UIButton * textBtn;
 @property (nonatomic,strong) UIImage * meImage;
+@property (nonatomic,strong) UIImage * otherImage;
 @end
 
 
 @implementation ChatCell
+
+- (UIImage *)otherImage {
+    if (_otherImage == nil) {
+      NSData * data = [[XMPPTool defaultTool].avatar photoDataForJID:self.friendJID];
+        _otherImage = [UIImage imageWithData:data];
+    }
+    return _otherImage;
+}
 
 - (UIImage *)meImage {
     if (_meImage == nil) {
@@ -140,7 +149,7 @@
     
     //根据type 设置 icon图标
     
-    UIImage * image = [message.type boolValue] == MESSAGETYPEME?self.meImage:[UIImage imageNamed:@"other"];
+    UIImage * image = [message.type boolValue] == MESSAGETYPEME?self.meImage:self.otherImage;
     self.iconView.image =  image;
     
     [self.textBtn setTitle:message.text forState:UIControlStateNormal];

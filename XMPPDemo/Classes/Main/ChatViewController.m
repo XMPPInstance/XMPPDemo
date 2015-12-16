@@ -33,10 +33,10 @@
 //            NSLog(@"%@",msg);
            NSString * type;
             
-            if ([msg.outgoing isEqualToNumber:@0]) {
-                type = @"1";
-            } else {
+            if ([msg.outgoing isEqualToNumber:@1]) {
                 type = @"0";
+            } else {
+                type = @"1";
             }
 
             NSDictionary * dic = @{@"text":msg.body,@"type":type,@"time":msg.timestamp};
@@ -163,8 +163,6 @@
     
 }
 
-
-
 - (void)loadMsgs {
     // 上下文
     NSManagedObjectContext * context = [XMPPTool defaultTool].msgStorage.mainThreadManagedObjectContext;
@@ -247,7 +245,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChatCell * chatCell = [ChatCell chatCellWithTableView:tableView];
 
-    
+    chatCell.friendJID = self.friendJid;
 
    
     WQTMessageFrame * mFrame = self.messagesFrame[indexPath.row];
