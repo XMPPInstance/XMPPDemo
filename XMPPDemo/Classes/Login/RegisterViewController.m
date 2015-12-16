@@ -61,10 +61,10 @@
     
     [self.view endEditing:YES];
     // 判断用户输入的是否为手机号
-    if (![self.userField isTelphoneNum]) {
-        [MBProgressHUD showError:@"请输入正确的手机号码" toView:self.view];
-        return;
-    }
+//    if (![self.userField isTelphoneNum]) {
+//        [MBProgressHUD showError:@"请输入正确的手机号码" toView:self.view];
+//        return;
+//    }
     
     // 1 把用户注册的数据保存单例
     UserInfo * userInfo = [UserInfo defaultUserInfo];

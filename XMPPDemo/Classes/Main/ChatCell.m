@@ -24,7 +24,12 @@
 - (UIImage *)otherImage {
     if (_otherImage == nil) {
       NSData * data = [[XMPPTool defaultTool].avatar photoDataForJID:self.friendJID];
-        _otherImage = [UIImage imageWithData:data];
+        if (data == nil) {
+            _otherImage = [UIImage imageNamed:@"defaultHead"];
+        } else {
+            _otherImage = [UIImage imageWithData:data];  
+        }
+        
     }
     return _otherImage;
 }

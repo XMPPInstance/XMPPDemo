@@ -23,6 +23,7 @@
 		FC2C27E61C213D1F0024EADC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E51C213D1F0024EADC /* Security.framework */; };
 		FC2C27E81C213D290024EADC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E71C213D290024EADC /* libz.tbd */; };
 		FC2C27EA1C213E050024EADC /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC2C27E91C213E050024EADC /* PushConfig.plist */; };
+		FC2C27ED1C2144A60024EADC /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C27EC1C2144A60024EADC /* HistoryViewController.m */; };
 		FC59C0731C1D5DE700D9350F /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0721C1D5DE700D9350F /* XMPPTool.m */; };
 		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
 		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
@@ -233,6 +234,8 @@
 		FC2C27E51C213D1F0024EADC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FC2C27E71C213D290024EADC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		FC2C27E91C213E050024EADC /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		FC2C27EB1C2144A60024EADC /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		FC2C27EC1C2144A60024EADC /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		FC59C0711C1D5DE700D9350F /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		FC59C0721C1D5DE700D9350F /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
 		FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -1678,6 +1681,8 @@
 				FC59C0C01C1EA94A00D9350F /* AddContactViewController.m */,
 				FC59C0C21C1EB92100D9350F /* ChatViewController.h */,
 				FC59C0C31C1EB92100D9350F /* ChatViewController.m */,
+				FC2C27EB1C2144A60024EADC /* HistoryViewController.h */,
+				FC2C27EC1C2144A60024EADC /* HistoryViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1907,6 +1912,7 @@
 				FCF94DB81C16CCD9004D86E8 /* DDTTYLogger.m in Sources */,
 				FCF94F781C17D4E2004D86E8 /* UIScreen+WF.m in Sources */,
 				FCF94E0B1C16CEBF004D86E8 /* NSNumber+XMPP.m in Sources */,
+				FC2C27ED1C2144A60024EADC /* HistoryViewController.m in Sources */,
 				FCF94F4C1C16CF02004D86E8 /* XMPPPresence+XEP_0172.m in Sources */,
 				FCF94F1F1C16CF02004D86E8 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				FCF94F7B1C17D4E2004D86E8 /* UIView+WF.m in Sources */,

@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "XMPPvCardTempModule.h"
 #import "XMPPFramework.h"
+
 typedef enum {
+    XMPPResultTypeConnecting,// 连接中
     XMPPResultTypeLoginSuccess,// 登录成功
     XMPPResultTypeLoginFailure,// 登录失败
     XMPPResultTypeNetError, // 网络错误

@@ -65,7 +65,7 @@
     NSLog(@"%@",path);
     
     //打开XMPP的日志
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+//    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [WCNavigationController setupNavTheme];
     // 从沙盒里加载用户的数据到单例
     [[UserInfo defaultUserInfo] loadUserInfoFromSandbox];
@@ -74,9 +74,21 @@
         UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = storyBoard.instantiateInitialViewController;
         // 自动登录服务器
-        [[XMPPTool defaultTool] xmppUserLogin:nil];
-    
+        // 1 秒后自动登录
+#pragma mark 不立即连接 稍微等一下
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             [[XMPPTool defaultTool] xmppUserLogin:nil];
+        });
     }
+    
+    // 注册应用接收通知
+    // 大于iOS8.0 才需要 注册通知
+    if ([[UIDevice currentDevice].systemVersion doubleValue] > 8.0) {
+        UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
     return YES;
 }
 

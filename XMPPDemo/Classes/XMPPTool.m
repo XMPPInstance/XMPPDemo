@@ -7,7 +7,7 @@
 //
 
 #import "XMPPTool.h"
-
+extern  NSString * const LoginStatusChangeNotification = @"LoginStatusChangeNotification";
 @interface XMPPTool ()<XMPPStreamDelegate> {
     
     XMPPResultBlock _resultBlock;
@@ -31,6 +31,7 @@
 @end
 
 @implementation XMPPTool
+
 + (XMPPTool *)defaultTool {
     static XMPPTool * tool = nil;
     if (tool == nil) {
@@ -65,6 +66,7 @@
     _msgArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgStorage];
     [_msgArchiving activate:_xmppStream];
     
+    _xmppStream.enableBackgroundingOnSocket = YES;
     // 设置代理
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
     
@@ -101,6 +103,9 @@
     if (!_xmppStream) {
         [self setUpXMPPStream];
     }
+    // 发送通知 "正在连接"
+    [self postNotification:XMPPResultTypeConnecting];
+    
     // 设置登录用户JID
     // resource 标识用户登录的客户端 iPhone Android WindowsPhone
     
@@ -141,6 +146,13 @@
     WCLog(@"%@",presence);
     [_xmppStream sendElement:presence];
 }
+// 定义发送通知的方法
+// 通知 HistoryViewController 登陆状态
+- (void)postNotification:(XMPPResultType)resultType {
+    // 将登陆状态放入字典 然后通过通知传递
+    NSDictionary * userInfo = @{@"loginStatus":@(resultType)};
+    [[NSNotificationCenter defaultCenter] postNotificationName:LoginStatusChangeNotification object:nil userInfo:userInfo];
+}
 
 #pragma mark -XMPPStream的代理
 #pragma mark 与主机连接成功
@@ -153,6 +165,7 @@
         // 主机连接成功后,发送密码进行授权
         [self sendPwdToHost];
     }
+    [self postNotification:XMPPResultTypeLoginSuccess];
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error {
@@ -162,6 +175,11 @@
     // 如果没有错误,表示正常的断开连接(人为断开连接)
     if (error && _resultBlock) {
         _resultBlock(XMPPResultTypeNetError);
+    }
+    
+    if (error) {
+        // 通知网络不稳定
+        [self postNotification:XMPPResultTypeNetError];
     }
     
     WCLog(@"与主机断开连接%@",error);
@@ -177,7 +195,7 @@
     if (_resultBlock) {
         _resultBlock(XMPPResultTypeLoginSuccess);
     }
-    
+    [self postNotification:XMPPResultTypeLoginSuccess];
 }
 
 #pragma mark 授权失败
@@ -187,6 +205,7 @@
     if (_resultBlock) {
         _resultBlock(XMPPResultTypeLoginFailure);
     }
+    [self postNotification:XMPPResultTypeLoginFailure];
 }
 
 #pragma mark - 注册成功
@@ -205,6 +224,31 @@
         _resultBlock(XMPPResultTypeRegisterFailure);
     }
 }
+
+#pragma mark - 接收到好友的消息
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message {
+    WCLog(@"%@",message);
+    
+    // 如果程序不在前台 发出一个本地通知
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+        WCLog(@"在后台");
+        // 本地通知
+        UILocalNotification * localNoti = [[UILocalNotification alloc] init];
+        // 设置通知内容
+        localNoti.alertBody = [NSString stringWithFormat:@"%@\n%@",message.fromStr,message.body];
+        // 设置通知执行时间
+        localNoti.fireDate = [NSDate date];
+        // 设置通知声音
+        localNoti.soundName = @"default";
+        // 执行通知
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
+    }
+    
+    
+    
+}
+
+
 
 #pragma mark 公共方法
 - (void)xmppUserLogOut {
