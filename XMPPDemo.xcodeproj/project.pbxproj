@@ -12,6 +12,17 @@
 		FC2C27831C2060FF0024EADC /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C27821C2060FF0024EADC /* ChatCell.m */; };
 		FC2C27881C2061430024EADC /* WQTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C27871C2061430024EADC /* WQTMessage.m */; };
 		FC2C278B1C2061530024EADC /* WQTMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C278A1C2061530024EADC /* WQTMessageFrame.m */; };
+		FC2C27D61C21385A0024EADC /* libPushSDK-1.8.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27D51C21385A0024EADC /* libPushSDK-1.8.8.a */; };
+		FC2C27D81C213CE20024EADC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27D71C213CE20024EADC /* CFNetwork.framework */; };
+		FC2C27DA1C213CEC0024EADC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27D91C213CEC0024EADC /* CoreFoundation.framework */; };
+		FC2C27DC1C213CF50024EADC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27DB1C213CF50024EADC /* CoreTelephony.framework */; };
+		FC2C27DE1C213CFE0024EADC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27DD1C213CFE0024EADC /* SystemConfiguration.framework */; };
+		FC2C27E01C213D070024EADC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27DF1C213D070024EADC /* CoreGraphics.framework */; };
+		FC2C27E21C213D0E0024EADC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E11C213D0E0024EADC /* Foundation.framework */; };
+		FC2C27E41C213D170024EADC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E31C213D170024EADC /* UIKit.framework */; };
+		FC2C27E61C213D1F0024EADC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E51C213D1F0024EADC /* Security.framework */; };
+		FC2C27E81C213D290024EADC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2C27E71C213D290024EADC /* libz.tbd */; };
+		FC2C27EA1C213E050024EADC /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC2C27E91C213E050024EADC /* PushConfig.plist */; };
 		FC59C0731C1D5DE700D9350F /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0721C1D5DE700D9350F /* XMPPTool.m */; };
 		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
 		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
@@ -210,6 +221,18 @@
 		FC2C27871C2061430024EADC /* WQTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WQTMessage.m; sourceTree = "<group>"; };
 		FC2C27891C2061530024EADC /* WQTMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WQTMessageFrame.h; sourceTree = "<group>"; };
 		FC2C278A1C2061530024EADC /* WQTMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WQTMessageFrame.m; sourceTree = "<group>"; };
+		FC2C27D41C21385A0024EADC /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		FC2C27D51C21385A0024EADC /* libPushSDK-1.8.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.8.a"; sourceTree = "<group>"; };
+		FC2C27D71C213CE20024EADC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FC2C27D91C213CEC0024EADC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		FC2C27DB1C213CF50024EADC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		FC2C27DD1C213CFE0024EADC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FC2C27DF1C213D070024EADC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FC2C27E11C213D0E0024EADC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FC2C27E31C213D170024EADC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FC2C27E51C213D1F0024EADC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FC2C27E71C213D290024EADC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		FC2C27E91C213E050024EADC /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		FC59C0711C1D5DE700D9350F /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		FC59C0721C1D5DE700D9350F /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
 		FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -579,6 +602,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2C27E81C213D290024EADC /* libz.tbd in Frameworks */,
+				FC2C27E61C213D1F0024EADC /* Security.framework in Frameworks */,
+				FC2C27E41C213D170024EADC /* UIKit.framework in Frameworks */,
+				FC2C27E21C213D0E0024EADC /* Foundation.framework in Frameworks */,
+				FC2C27E01C213D070024EADC /* CoreGraphics.framework in Frameworks */,
+				FC2C27DE1C213CFE0024EADC /* SystemConfiguration.framework in Frameworks */,
+				FC2C27DC1C213CF50024EADC /* CoreTelephony.framework in Frameworks */,
+				FC2C27DA1C213CEC0024EADC /* CoreFoundation.framework in Frameworks */,
+				FC2C27D81C213CE20024EADC /* CFNetwork.framework in Frameworks */,
+				FC2C27D61C21385A0024EADC /* libPushSDK-1.8.8.a in Frameworks */,
 				FC0F875C1C1C5F84009048C7 /* libresolv.tbd in Frameworks */,
 				FC0F875A1C1C5F7B009048C7 /* libxml2.tbd in Frameworks */,
 				FCF94DC11C16CCDA004D86E8 /* libidn.a in Frameworks */,
@@ -604,6 +637,15 @@
 				FC2C278A1C2061530024EADC /* WQTMessageFrame.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FC2C27D31C21385A0024EADC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				FC2C27D41C21385A0024EADC /* APService.h */,
+				FC2C27D51C21385A0024EADC /* libPushSDK-1.8.8.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		FC59C0C51C1EB9E200D9350F /* View */ = {
@@ -661,6 +703,16 @@
 		FCF94D201C151D30004D86E8 = {
 			isa = PBXGroup;
 			children = (
+				FC2C27E91C213E050024EADC /* PushConfig.plist */,
+				FC2C27E71C213D290024EADC /* libz.tbd */,
+				FC2C27E51C213D1F0024EADC /* Security.framework */,
+				FC2C27E31C213D170024EADC /* UIKit.framework */,
+				FC2C27E11C213D0E0024EADC /* Foundation.framework */,
+				FC2C27DF1C213D070024EADC /* CoreGraphics.framework */,
+				FC2C27DD1C213CFE0024EADC /* SystemConfiguration.framework */,
+				FC2C27DB1C213CF50024EADC /* CoreTelephony.framework */,
+				FC2C27D91C213CEC0024EADC /* CoreFoundation.framework */,
+				FC2C27D71C213CE20024EADC /* CFNetwork.framework */,
 				FC0F875B1C1C5F84009048C7 /* libresolv.tbd */,
 				FC0F87591C1C5F7B009048C7 /* libxml2.tbd */,
 				FCF94D2B1C151D30004D86E8 /* XMPPDemo */,
@@ -735,6 +787,7 @@
 		FCF94D891C16CC01004D86E8 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				FC2C27D31C21385A0024EADC /* lib */,
 				FC59C0CE1C20049900D9350F /* SDWebImage */,
 				FC59C0CB1C1FFDEA00D9350F /* HttpTool.h */,
 				FC59C0CC1C1FFDEA00D9350F /* HttpTool.m */,
@@ -1704,6 +1757,7 @@
 				TargetAttributes = {
 					FCF94D281C151D30004D86E8 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z6323RJ3ME;
 					};
 					FCF94D411C151D30004D86E8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -1736,6 +1790,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF94DC01C16CCDA004D86E8 /* build-libidn.sh in Resources */,
+				FC2C27EA1C213E050024EADC /* PushConfig.plist in Resources */,
 				FC59C0CA1C1EBA2A00D9350F /* InputView.xib in Resources */,
 				FCF94D381C151D30004D86E8 /* Main.storyboard in Resources */,
 				FCF94F621C17C67B004D86E8 /* Login.storyboard in Resources */,
@@ -2057,12 +2112,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ting Yu (6J2KPM543Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ting Yu (6J2KPM543Z)";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XMPPDemo/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
+					"$(SRCROOT)/Lib/lib",
 				);
 				INFOPLIST_FILE = XMPPDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2070,9 +2129,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XMPPDemo/Classes/Lib/XMPP/libidn",
+					"$(PROJECT_DIR)/XMPPDemo/Classes/Lib/lib",
+					"$(SRCROOT)/Lib/lib",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6dce8edc-9d68-4cd1-979b-783c966f1ee0";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2082,12 +2144,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ting Yu (6J2KPM543Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ting Yu (6J2KPM543Z)";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XMPPDemo/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
+					"$(SRCROOT)/Lib/lib",
 				);
 				INFOPLIST_FILE = XMPPDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2095,9 +2161,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XMPPDemo/Classes/Lib/XMPP/libidn",
+					"$(PROJECT_DIR)/XMPPDemo/Classes/Lib/lib",
+					"$(SRCROOT)/Lib/lib",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6dce8edc-9d68-4cd1-979b-783c966f1ee0";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
