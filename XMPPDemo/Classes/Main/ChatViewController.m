@@ -9,6 +9,9 @@
 #import "ChatViewController.h"
 #import "InputView.h"
 #import "UIImageView+WebCache.h"
+#import "ChatCell.h"
+#import "WQTMessage.h"
+#import "WQTMessageFrame.h"
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
     NSFetchedResultsController * _fetchedResultController;
 }
@@ -16,9 +19,51 @@
 @property (nonatomic,strong) NSLayoutConstraint * inputViewHeightContraint;// inputView高度约束
 @property (nonatomic,weak) InputView * inputView;
 @property (nonatomic,weak) UITableView * tableView;
+@property (nonatomic,strong) NSArray * messagesFrame;
 @end
 
 @implementation ChatViewController
+
+- (NSArray *)messagesFrame {
+    if (_messagesFrame == nil) {
+        NSArray * tmp = _fetchedResultController.fetchedObjects;
+        NSMutableArray * array = [NSMutableArray array];
+        for (XMPPMessageArchiving_Message_CoreDataObject * msg in tmp)
+        {
+//            NSLog(@"%@",msg);
+           NSString * type;
+            
+            if ([msg.outgoing isEqualToNumber:@0]) {
+                type = @"1";
+            } else {
+                type = @"0";
+            }
+
+            NSDictionary * dic = @{@"text":msg.body,@"type":type,@"time":msg.timestamp};
+            
+            WQTMessage * message = [WQTMessage messageWithDict:dic];
+           
+            WQTMessageFrame * lastMF = [array lastObject];
+            NSDate * date = [[lastMF message].time dateByAddingTimeInterval:60];
+            
+//            NSDate * nextDay = [date ]
+            NSDate * earDate = [date earlierDate:msg.timestamp];
+            if ([earDate isEqualToDate:msg.timestamp]) {
+                message.hiddenTime = YES;
+            } else {
+                message.hiddenTime = NO;
+            }
+//             NSLog(@"%@",message);
+            WQTMessageFrame * mF = [[WQTMessageFrame alloc] init];
+            mF.message = message;
+            [array addObject:mF];
+        }
+        _messagesFrame = array;
+        
+    }
+    return _messagesFrame;
+
+}
 
 - (HttpTool *)httpTool {
     if (_httpTool == nil) {
@@ -30,12 +75,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self loadMsgs];
     [self setUpView];
     // 键盘监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     
-    [self loadMsgs];
+   
     
 }
 
@@ -72,12 +119,13 @@
     // 代码方式实现自动布局 VFL
     // 创建一个TableView
     UITableView * tableView = [[UITableView alloc] init];
+    tableView.separatorStyle = NO;
+    tableView.backgroundColor = [UIColor grayColor];
     self.tableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
 #warning 代码实现自动布局,要设置下面的属性为NO
     tableView.translatesAutoresizingMaskIntoConstraints = NO;
-//    tableView.backgroundColor = [UIColor redColor];
     [self.view addSubview:tableView];
     
     // 创建一个输入框的View
@@ -165,39 +213,61 @@
     return _fetchedResultController.fetchedObjects.count;
 }
 
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    static NSString * cellID = @"ChatCell";
+//    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+//    }
+//    
+//    // 获取聊天消息对象
+//    XMPPMessageArchiving_Message_CoreDataObject * msg = _fetchedResultController.fetchedObjects[indexPath.row];
+////    NSString * type =
+//    NSDictionary * dic = @{@"text":msg.messageStr,@"type":msg.outgoing?@"me":@"other",@"time":msg.timestamp};
+//    NSString * chatType = [msg.message attributeStringValueForName:@"bodyType"];
+//    
+//  if ([chatType isEqualToString:@"text"]) {
+//        if ([msg.outgoing boolValue]) { // 自己发的
+//            // 显示消息
+//            cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
+//        } else { // 别人发的
+//            cell.textLabel.text = [NSString stringWithFormat:@"Other: %@",msg.body];
+//            
+//        }
+//        cell.imageView.image = nil;
+//  } else if ([chatType isEqualToString:@"image"]) {
+//      // 下载图片
+//      [cell.imageView sd_setImageWithURL:[NSURL URLWithString:msg.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead_qq"]];
+//      cell.textLabel.text = nil;
+//  }
+//    return cell;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * cellID = @"ChatCell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    ChatCell * chatCell = [ChatCell chatCellWithTableView:tableView];
+
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
-    }
+
+   
+    WQTMessageFrame * mFrame = self.messagesFrame[indexPath.row];
+   
+    chatCell.mFrame = mFrame;
     
-    // 获取聊天消息对象
-    XMPPMessageArchiving_Message_CoreDataObject * msg = _fetchedResultController.fetchedObjects[indexPath.row];
     
-    NSString * chatType = [msg.message attributeStringValueForName:@"bodyType"];
-    
-  if ([chatType isEqualToString:@"text"]) {
-        if ([msg.outgoing boolValue]) { // 自己发的
-            // 显示消息
-            cell.textLabel.text = [NSString stringWithFormat:@"Me: %@",msg.body];
-        } else { // 别人发的
-            cell.textLabel.text = [NSString stringWithFormat:@"Other: %@",msg.body];
-            
-        }
-        cell.imageView.image = nil;
-  } else if ([chatType isEqualToString:@"image"]) {
-      // 下载图片
-      [cell.imageView sd_setImageWithURL:[NSURL URLWithString:msg.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead_qq"]];
-      cell.textLabel.text = nil;
-  }
-    return cell;
+    return chatCell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WQTMessageFrame * mFrame = self.messagesFrame[indexPath.row];
+    return mFrame.cellHeight;
+}
+
 
 #pragma mark resultController 代理
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // 刷新数据
+    _messagesFrame = nil;
     [self.tableView reloadData];
     [self scrollToTableBottom];
 }
@@ -242,9 +312,12 @@
 
 #pragma mark 滚动到底部
 - (void)scrollToTableBottom {
-    NSInteger lastRow = _fetchedResultController.fetchedObjects.count - 1;
-    NSIndexPath * lastPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    [self.tableView scrollToRowAtIndexPath:lastPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (_fetchedResultController.fetchedObjects.count > 0) {
+        NSInteger lastRow = _fetchedResultController.fetchedObjects.count - 1;
+        NSIndexPath * lastPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
     
 }
 

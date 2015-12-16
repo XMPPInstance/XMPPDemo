@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FC0F875A1C1C5F7B009048C7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0F87591C1C5F7B009048C7 /* libxml2.tbd */; };
 		FC0F875C1C1C5F84009048C7 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0F875B1C1C5F84009048C7 /* libresolv.tbd */; };
+		FC2C27831C2060FF0024EADC /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C27821C2060FF0024EADC /* ChatCell.m */; };
+		FC2C27881C2061430024EADC /* WQTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C27871C2061430024EADC /* WQTMessage.m */; };
+		FC2C278B1C2061530024EADC /* WQTMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2C278A1C2061530024EADC /* WQTMessageFrame.m */; };
 		FC59C0731C1D5DE700D9350F /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0721C1D5DE700D9350F /* XMPPTool.m */; };
 		FC59C0B81C1DB9B000D9350F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0B71C1DB9B000D9350F /* ProfileViewController.m */; };
 		FC59C0BB1C1E594100D9350F /* EditCardProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC59C0BA1C1E594100D9350F /* EditCardProfileViewController.m */; };
@@ -201,6 +204,12 @@
 /* Begin PBXFileReference section */
 		FC0F87591C1C5F7B009048C7 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		FC0F875B1C1C5F84009048C7 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		FC2C27811C2060FF0024EADC /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		FC2C27821C2060FF0024EADC /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		FC2C27861C2061430024EADC /* WQTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WQTMessage.h; sourceTree = "<group>"; };
+		FC2C27871C2061430024EADC /* WQTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WQTMessage.m; sourceTree = "<group>"; };
+		FC2C27891C2061530024EADC /* WQTMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WQTMessageFrame.h; sourceTree = "<group>"; };
+		FC2C278A1C2061530024EADC /* WQTMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WQTMessageFrame.m; sourceTree = "<group>"; };
 		FC59C0711C1D5DE700D9350F /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		FC59C0721C1D5DE700D9350F /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
 		FC59C0B61C1DB9B000D9350F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -586,12 +595,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC2C27841C2061230024EADC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC2C27861C2061430024EADC /* WQTMessage.h */,
+				FC2C27871C2061430024EADC /* WQTMessage.m */,
+				FC2C27891C2061530024EADC /* WQTMessageFrame.h */,
+				FC2C278A1C2061530024EADC /* WQTMessageFrame.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		FC59C0C51C1EB9E200D9350F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FC59C0C61C1EB9FF00D9350F /* InputView.h */,
 				FC59C0C71C1EB9FF00D9350F /* InputView.m */,
 				FC59C0C91C1EBA2900D9350F /* InputView.xib */,
+				FC2C27811C2060FF0024EADC /* ChatCell.h */,
+				FC2C27821C2060FF0024EADC /* ChatCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1523,6 +1545,7 @@
 		FCF94F601C17C634004D86E8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				FC2C27841C2061230024EADC /* Model */,
 				FC59C0C51C1EB9E200D9350F /* View */,
 				FCF94F8D1C19089A004D86E8 /* Controllers */,
 				FCF94D361C151D30004D86E8 /* Main.storyboard */,
@@ -1745,6 +1768,7 @@
 				FCF94F1D1C16CF02004D86E8 /* XMPPRoomHybridStorage.m in Sources */,
 				FCF94E051C16CEBF004D86E8 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				FCF94F231C16CF02004D86E8 /* XMPPMessage+XEP0045.m in Sources */,
+				FC2C278B1C2061530024EADC /* WQTMessageFrame.m in Sources */,
 				FCF94F901C1908C0004D86E8 /* MeViewController.m in Sources */,
 				FCF94F841C180913004D86E8 /* MBProgressHUD.m in Sources */,
 				FCF94F241C16CF02004D86E8 /* XMPPMUC.m in Sources */,
@@ -1871,6 +1895,7 @@
 				FCF94E0A1C16CEBF004D86E8 /* NSData+XMPP.m in Sources */,
 				FCF94F1E1C16CF02004D86E8 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				FCF94F9E1C195450004D86E8 /* BaseLoginViewController.m in Sources */,
+				FC2C27881C2061430024EADC /* WQTMessage.m in Sources */,
 				FCF94DBE1C16CCDA004D86E8 /* DDXMLElement.m in Sources */,
 				FCF94F8C1C18202F004D86E8 /* WCNavigationController.m in Sources */,
 				FCF94F371C16CF02004D86E8 /* TURNSocket.m in Sources */,
@@ -1878,6 +1903,7 @@
 				FC59C0C41C1EB92100D9350F /* ChatViewController.m in Sources */,
 				FCF94F101C16CF02004D86E8 /* XMPPRoster.m in Sources */,
 				FC59C0FD1C20049900D9350F /* UIImageView+HighlightedWebCache.m in Sources */,
+				FC2C27831C2060FF0024EADC /* ChatCell.m in Sources */,
 				FC59C0C11C1EA94A00D9350F /* AddContactViewController.m in Sources */,
 				FC59C0F01C20049900D9350F /* MKAnnotationView+WebCache.m in Sources */,
 				FCF94F501C16CF02004D86E8 /* XMPPAutoPing.m in Sources */,
