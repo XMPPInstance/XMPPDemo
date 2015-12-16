@@ -9,15 +9,24 @@
 #import "ChatCell.h"
 #import "WQTMessageFrame.h"
 #import "WQTMessage.h"
+#import "XMPPvCardTemp.h"
 @interface ChatCell ()
 @property (nonatomic,weak) UILabel * timeLab;
 @property (nonatomic,weak) UIImageView * iconView;
 @property (nonatomic,weak) UIButton * textBtn;
+@property (nonatomic,strong) UIImage * meImage;
 @end
 
 
 @implementation ChatCell
 
+- (UIImage *)meImage {
+    if (_meImage == nil) {
+        XMPPvCardTemp * myVCard = [XMPPTool defaultTool].vCard.myvCardTemp;
+        _meImage = [UIImage imageWithData:myVCard.photo];
+    }
+    return _meImage;
+}
 + (instancetype)chatCellWithTableView:(UITableView *)tableView {
     static NSString * ID = @"MessageCell";
     ChatCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -131,8 +140,8 @@
     
     //根据type 设置 icon图标
     
-    NSString * iconName = [message.type boolValue]== MESSAGETYPEME?@"me":@"other";
-    self.iconView.image =  [UIImage imageNamed:iconName];
+    UIImage * image = [message.type boolValue] == MESSAGETYPEME?self.meImage:[UIImage imageNamed:@"other"];
+    self.iconView.image =  image;
     
     [self.textBtn setTitle:message.text forState:UIControlStateNormal];
     NSLog(@"%@",message.type);
