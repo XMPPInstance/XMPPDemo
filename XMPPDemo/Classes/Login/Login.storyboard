@@ -49,7 +49,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jED-jC-gcb">
                                         <rect key="frame" x="0.0" y="103" width="280" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jlu-O3-ZMF">
                                         <rect key="frame" x="0.0" y="134" width="280" height="30"/>
@@ -164,7 +164,7 @@
                                             <constraint firstAttribute="height" constant="42" id="scx-2F-bzp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="CWY-Zf-hL6"/>
@@ -278,7 +278,7 @@
                                             <constraint firstAttribute="width" constant="400" id="bzD-gK-cMT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="bzD-gK-cMT"/>
