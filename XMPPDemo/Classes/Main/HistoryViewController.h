@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HistoryViewController : UITableViewController
+#import "UMSocial.h"
+@interface HistoryViewController : UITableViewController<UMSocialUIDelegate,UMSocialDataDelegate>
 
 @end

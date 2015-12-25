@@ -8,12 +8,23 @@
 
 #import "HistoryViewController.h"
 #import "XMPPTool.h"
+
 @interface HistoryViewController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end
 
 @implementation HistoryViewController
+- (IBAction)shareBtnClick:(id)sender {
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"567cab8367e58e5aa6000e77"
+                                      shareText:@"你要分享的文字"
+                                     shareImage:[UIImage imageNamed:@"icon.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,UMShareToQQ,nil]
+                                       delegate:nil];
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

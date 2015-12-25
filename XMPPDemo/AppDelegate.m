@@ -12,6 +12,7 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "APService.h"
+#import "UMSocial.h"
 /*
  // 在appDelegate中实现登录
  
@@ -31,8 +32,16 @@
 //    [self connectToHost];
     
     // Required
-
-        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    
+    [UMSocialData setAppKey:@"567cab8367e58e5aa6000e77"];
+    
+    //打开调试log的开关
+    [UMSocialData openLog:YES];
+    
+    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+    
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
             //categories
             [APService
              registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
@@ -90,6 +99,22 @@
     }
     
     return YES;
+}
+
+/**
+ 这里处理新浪微博SSO授权之后跳转回来，和微信分享完成之后跳转回来
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+
+/**
+ 这里处理新浪微博SSO授权进入新浪微博客户端后进入后台，再返回原来应用
+ */
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
 }
 
 - (void)application:(UIApplication *)application
